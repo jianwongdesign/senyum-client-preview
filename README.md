@@ -2,9 +2,14 @@
 
 Public client-review preview for the Senyum Travel website concept.
 
-## Preview pages
+## Homepage directions
 
-- [Homepage](https://jianwongdesign.github.io/senyum-client-preview/)
+- [Concept selector](https://jianwongdesign.github.io/senyum-client-preview/)
+- [Option A — Premium Journey](https://jianwongdesign.github.io/senyum-client-preview/export/Senyum-Homepage.html)
+- [Option B — Modern Discovery](https://jianwongdesign.github.io/senyum-client-preview/export/Senyum-OptionB-Discovery.html)
+
+## Supporting pages
+
 - [China Muslim-friendly group tour](https://jianwongdesign.github.io/senyum-client-preview/export/Senyum-Tour-China.html)
 - [Turkey destination](https://jianwongdesign.github.io/senyum-client-preview/export/Senyum-Destination-Turkey.html)
 
