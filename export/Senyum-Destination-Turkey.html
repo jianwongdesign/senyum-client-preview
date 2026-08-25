@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Senyum website concept — Turkey destination</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160"><rect width="240" height="160" fill="#1B2A22"/><g fill="none" stroke="#C79A3A" stroke-width="7" stroke-linecap="round"><path d="M72 104c14-10 22-24 22-40"/><path d="M118 104c14-10 22-24 22-40"/><path d="M164 104c14-10 22-24 22-40"/></g><text x="120" y="132" text-anchor="middle" font-family="system-ui,sans-serif" font-size="17" font-weight="700" fill="#C79A3A">Senyum · Turkey</text></svg></template>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet" />
+<script src="./image-slot.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: #F4F1EA; color: #1B2A22; font-family: 'Nunito Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
+  h1, h2, h3 { font-family: Nunito, system-ui, sans-serif; }
+  a { color: #7A5A1E; text-decoration: none; }
+  a:hover { color: #1E3A2F; }
+  :focus-visible { outline: 3px solid #C79A3A; outline-offset: 3px; }
+  input, select, textarea, button { font: inherit; color: inherit; }
+  h1, h2, h3, h4, p, ul, ol, li, dl, dd, dt { margin: 0; padding: 0; }
+  ul, ol { list-style: none; }
+</style>
+</helmet>
+<div style="min-height:100vh;background:#F4F1EA">
+
+  <div style="background:#1B2A22;color:#E7EDE5">
+    <div style="max-width:1340px;margin:0 auto;padding:10px clamp(20px,4vw,54px);display:flex;flex-wrap:wrap;gap:6px 24px;align-items:center;justify-content:space-between;font-size:13px;font-weight:600">
+      <span>Licensed Singapore travel agency · TA03740</span>
+      <span style="display:flex;flex-wrap:wrap;gap:6px 20px">
+        <a href="#enquire" style="color:#E7EDE5" style-hover="color:#C79A3A">WhatsApp +65 8900 1305</a>
+        <a href="#enquire" style="color:#E7EDE5" style-hover="color:#C79A3A">hello@senyum.com.sg</a>
+      </span>
+    </div>
+  </div>
+
+  <header style="position:sticky;top:0;z-index:40;background:#F4F1EA;box-shadow:0 1px 0 #DAD4C6">
+    <div style="max-width:1340px;margin:0 auto;padding:0 clamp(20px,4vw,54px);height:112px;display:flex;align-items:center;justify-content:space-between;gap:20px">
+      <a href="Senyum-Homepage.html" style="display:flex;align-items:center;flex:0 0 auto">
+        <img src="https://senyum.com.sg/wp-content/uploads/2023/06/Senyum-logo-Normal-red-colour.png" alt="Senyum Travel" style="height:82px;width:auto;display:block;background:#FDFBF6;border-radius:8px;padding:8px 12px;box-shadow:0 6px 18px rgba(27,42,34,0.16)" />
+      </a>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Primary" style="display:flex;align-items:center;gap:clamp(10px,1.5vw,24px)">
+        <a href="Senyum-Homepage.html" style="font-size:15px;font-weight:600;color:#1B2A22" style-hover="color:#7A5A1E">Home</a>
+        <a href="#tours" style="font-size:15px;font-weight:700;color:#1E3A2F;border-bottom:2px solid #C79A3A;padding-bottom:3px">Destinations</a>
+        <a href="#tours" style="font-size:15px;font-weight:600;color:#1B2A22" style-hover="color:#7A5A1E">Tours</a>
+        <a href="#halal" style="font-size:15px;font-weight:600;color:#1B2A22" style-hover="color:#7A5A1E">Umrah</a>
+        <a href="#enquire" style="font-size:15px;font-weight:600;color:#1B2A22" style-hover="color:#7A5A1E">Corporate</a>
+        <a href="#enquire" style="background:#1E3A2F;color:#F4F1EA;font-size:15px;font-weight:700;padding:15px 26px;border-radius:8px;white-space:nowrap" style-hover="background:#1B2A22;color:#F4F1EA">Plan My Trip</a>
+      </nav>
+      </sc-if>
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center;gap:8px">
+        <a href="#enquire" style="background:#1E3A2F;color:#F4F1EA;font-size:15px;font-weight:700;padding:14px 20px;border-radius:8px;white-space:nowrap">Enquire</a>
+        <button type="button" onClick="{{ toggleMenu }}" aria-label="Open menu" style="background:#1B2A22;border:0;border-radius:8px;width:48px;height:48px;display:grid;place-items:center;cursor:pointer;color:#F4F1EA">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+        </button>
+      </div>
+      </sc-if>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="border-top:1px solid #DAD4C6;background:#F4F1EA;max-height:70vh;overflow:auto">
+      <nav aria-label="Mobile" style="padding:10px clamp(20px,4vw,54px) 24px;display:grid;gap:3px">
+        <a href="Senyum-Homepage.html" style="padding:16px 14px;border-radius:8px;background:#FFFFFF;font-size:16px;font-weight:700;color:#1B2A22">Home</a>
+        <a href="#tours" style="padding:16px 14px;border-radius:8px;background:#1E3A2F;font-size:16px;font-weight:700;color:#F4F1EA">Destinations</a>
+        <a href="Senyum-Tour-China.html" style="padding:16px 14px;border-radius:8px;background:#FFFFFF;font-size:16px;font-weight:700;color:#1B2A22">Group tours</a>
+        <a href="#halal" style="padding:16px 14px;border-radius:8px;background:#FFFFFF;font-size:16px;font-weight:700;color:#1B2A22">Umrah</a>
+        <a href="#enquire" style="padding:16px 14px;border-radius:8px;background:#FFFFFF;font-size:16px;font-weight:700;color:#1B2A22">Corporate &amp; MICE</a>
+        <a href="#enquire" style="padding:16px 14px;border-radius:8px;background:#FFFFFF;font-size:16px;font-weight:700;color:#1B2A22">Contact</a>
+      </nav>
+    </div>
+    </sc-if>
+  </header>
+
+  <section id="top" style="position:relative;min-height:clamp(440px,64vh,640px);background:#1E3A2F;overflow:hidden;display:flex;align-items:stretch">
+    <div style="position:absolute;inset:0">
+      <image-slot id="tk-hero" role="img" aria-label="Hot air balloons rising over the valleys of Cappadocia, Turkey" shape="rect" fit="cover" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hot%20air%20balloons%20over%20Cappadocia.jpg?width=1920" placeholder=" "></image-slot>
+    </div>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;left:0;top:0;bottom:0;width:min(76%,1080px);pointer-events:none">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" width="100%" height="100%" style="display:block" aria-hidden="true">
+        <path d="M0,0 L60,0 C49,19 73,33 61,50 C49,67 71,81 56,100 L0,100 Z" fill="#1E3A2F"></path>
+        <path d="M60,0 C49,19 73,33 61,50 C49,67 71,81 56,100 L64,100 C79,81 57,67 69,50 C81,33 57,19 68,0 Z" fill="rgba(244,241,234,0.16)"></path>
+        <path d="M68,0 C57,19 81,33 69,50 C57,67 79,81 64,100 L69,100 C84,81 62,67 74,50 C86,33 62,19 73,0 Z" fill="rgba(244,241,234,0.09)"></path>
+      </svg>
+    </div>
+    </sc-if>
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(30,58,47,0.90) 0%,rgba(30,58,47,0.74) 46%,rgba(30,58,47,0.34) 76%,rgba(30,58,47,0.12) 100%);pointer-events:none"></div>
+    </sc-if>
+    <div style="position:relative;z-index:3;width:100%;max-width:1340px;margin:0 auto 0 0;padding:clamp(28px,4vw,52px) clamp(20px,4vw,54px);display:flex;flex-direction:column;justify-content:center">
+      <nav aria-label="Breadcrumb">
+        <ol style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;font-weight:600;color:#C6D2C4">
+          <li><a href="Senyum-Homepage.html" style="color:#C6D2C4" style-hover="color:#FFFFFF">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="Senyum-Homepage.html" style="color:#C6D2C4" style-hover="color:#FFFFFF">Destinations</a></li>
+          <li aria-hidden="true">/</li>
+          <li style="color:#FFFFFF">Turkey</li>
+        </ol>
+      </nav>
+      <div style="width:{{ colW }}">
+        <p style="margin-top:20px;font-size:12.5px;font-weight:700;letter-spacing:0.22em;color:#E4C87A">DESTINATION</p>
+        <h1 style="margin-top:14px;font-size:clamp(40px,6vw,78px);line-height:0.98;font-weight:800;letter-spacing:-0.03em;color:#F4F1EA">Turkey</h1>
+        <p style="margin-top:16px;max-width:{{ subW }};font-size:clamp(15.5px,1.3vw,18px);line-height:1.6;font-weight:600;color:#D3DCD5">Istanbul's mosques, Cappadocia's valleys and the Aegean coast — arranged as a group departure or privately on your own dates, with halal dining throughout.</p>
+        <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:12px">
+          <a href="#tours" style="background:#C79A3A;color:#1B2A22;font-size:15px;font-weight:800;padding:16px 26px;border-radius:8px" style-hover="background:#F4F1EA;color:#1E3A2F">See Turkey tours</a>
+          <a href="#enquire" style="border:2px solid #F4F1EA;color:#F4F1EA;font-size:15px;font-weight:800;padding:14px 24px;border-radius:8px" style-hover="background:#F4F1EA;color:#1E3A2F">Plan privately</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="background:#1B2A22;color:#F4F1EA">
+    <dl style="max-width:1340px;margin:0 auto;padding:clamp(18px,2.2vw,26px) clamp(20px,4vw,54px);display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:18px 28px">
+      <div>
+        <dt style="font-size:12.5px;font-weight:700;color:#A8B5AB">Typical duration</dt>
+        <dd style="margin-top:5px;font-family:Nunito,system-ui,sans-serif;font-size:20px;font-weight:800">8 days</dd>
+      </div>
+      <div>
+        <dt style="font-size:12.5px;font-weight:700;color:#A8B5AB">From</dt>
+        <dd style="margin-top:5px;font-family:Nunito,system-ui,sans-serif;font-size:20px;font-weight:800;color:#E4C87A">SGD 1,800</dd>
+      </div>
+      <div>
+        <dt style="font-size:12.5px;font-weight:700;color:#A8B5AB">Halal food</dt>
+        <dd style="margin-top:5px;font-family:Nunito,system-ui,sans-serif;font-size:20px;font-weight:800">Widely available</dd>
+      </div>
+      <div>
+        <dt style="font-size:12.5px;font-weight:700;color:#A8B5AB">Prayer spaces</dt>
+        <dd style="margin-top:5px;font-family:Nunito,system-ui,sans-serif;font-size:20px;font-weight:800">Widely available</dd>
+      </div>
+      <div>
+        <dt style="font-size:12.5px;font-weight:700;color:#A8B5AB">Departures</dt>
+        <dd style="margin-top:5px;font-family:Nunito,system-ui,sans-serif;font-size:20px;font-weight:800">On request</dd>
+      </div>
+    </dl>
+  </div>
+
+  <section id="tours" style="background:#F4F1EA;padding:clamp(44px,6vw,84px) clamp(20px,4vw,54px)">
+    <div style="max-width:1340px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;gap:14px 36px;align-items:flex-end;justify-content:space-between">
+        <div style="max-width:600px">
+          <h2 style="font-size:clamp(28px,3.4vw,44px);line-height:1.08;font-weight:800;letter-spacing:-0.02em;color:#1E3A2F">Ways to travel Turkey</h2>
+          <p style="margin-top:12px;font-size:16.5px;line-height:1.58;font-weight:600;color:#4C5A50">One scheduled group departure, or the same route arranged privately for your family or party.</p>
+        </div>
+        <a href="Senyum-Homepage.html" style="font-size:15px;font-weight:800;color:#1E3A2F" style-hover="color:#7A5A1E">All destinations →</a>
+      </div>
+      <div style="margin-top:28px;display:grid;grid-template-columns:repeat(auto-fill,minmax(288px,1fr));grid-auto-rows:1fr;justify-content:start;gap:clamp(18px,2.2vw,26px)">
+        <sc-for list="{{ options }}" as="o" hint-placeholder-count="3">
+          <article style="display:flex;flex-direction:column;background:#FFFFFF;border-radius:8px;overflow:hidden;box-shadow:0 10px 24px rgba(30,58,47,0.09);transition:box-shadow 0.25s ease,transform 0.25s ease" style-hover="box-shadow:0 24px 46px rgba(30,58,47,0.18);transform:translateY(-4px)">
+            <div style="position:relative;aspect-ratio:4/3;background:#DFE4DA">
+              <image-slot id="{{ o.slot }}" role="img" aria-label="{{ o.alt }}" shape="rect" fit="cover" src="{{ o.img }}" placeholder=" "></image-slot>
+              <span style="position:absolute;top:12px;left:12px;background:#FFFFFF;color:#1E3A2F;font-size:11.5px;font-weight:800;padding:7px 11px;border-radius:6px">{{ o.badge }}</span>
+            </div>
+            <div style="padding:20px;display:flex;flex-direction:column;flex:1;border-top:3px solid #C79A3A">
+              <h3 style="font-size:20px;line-height:1.22;font-weight:800;color:#1E3A2F">{{ o.title }}</h3>
+              <p style="margin-top:11px;font-size:14.5px;line-height:1.55;font-weight:600;color:#4C5A50;flex:1">{{ o.text }}</p>
+              <div style="margin-top:16px;padding-top:14px;border-top:1px solid #DAD4C6;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;justify-content:space-between">
+                <span style="font-size:14px;font-weight:700;color:#566159">{{ o.meta }}</span>
+                <span style="font-family:Nunito,system-ui,sans-serif;font-size:18px;font-weight:800;color:#1E3A2F">{{ o.price }}</span>
+              </div>
+              <a href="Senyum-Tour-China.html" style="margin-top:16px;text-align:center;background:#F4F1EA;color:#1E3A2F;font-size:14.5px;font-weight:800;padding:14px;border-radius:8px" style-hover="background:#1E3A2F;color:#F4F1EA">{{ o.cta }}</a>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#FFFFFF;padding:clamp(44px,6vw,84px) clamp(20px,4vw,54px)">
+    <div style="max-width:1340px;margin:0 auto">
+      <h2 style="font-size:clamp(28px,3.4vw,44px);line-height:1.08;font-weight:800;letter-spacing:-0.02em;color:#1E3A2F">Where you'll go</h2>
+      <div style="margin-top:26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));grid-auto-rows:1fr;gap:16px">
+        <sc-for list="{{ places }}" as="p" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;background:#F4F1EA;border-radius:8px;overflow:hidden">
+            <span style="position:relative;display:block;aspect-ratio:3/2;background:#DFE4DA">
+              <image-slot id="{{ p.slot }}" role="img" aria-label="{{ p.alt }}" shape="rect" fit="cover" src="{{ p.img }}" placeholder=" "></image-slot>
+            </span>
+            <span style="display:block;padding:18px 20px 22px">
+              <span style="display:block;font-family:Nunito,system-ui,sans-serif;font-size:19px;font-weight:800;color:#1E3A2F">{{ p.name }}</span>
+              <span style="display:block;margin-top:7px;font-size:14.5px;line-height:1.5;font-weight:600;color:#4C5A50">{{ p.text }}</span>
+            </span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="halal" style="background:#1E3A2F;color:#F4F1EA;padding:clamp(44px,6vw,84px) clamp(20px,4vw,54px)">
+    <div style="max-width:1340px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,3.5vw,56px);align-items:start">
+      <div>
+        <h2 style="font-size:clamp(26px,3.2vw,40px);line-height:1.08;font-weight:800;letter-spacing:-0.02em;color:#F4F1EA">Travelling Turkey as a Muslim family</h2>
+        <p style="margin-top:16px;max-width:480px;font-size:16.5px;line-height:1.6;font-weight:600;color:#D3DCD5">Halal food and prayer spaces are widely available across the country, so the planning effort goes into pacing, transfers and choosing the right stays rather than hunting for meals.</p>
+        <div style="margin-top:22px;width:80px;height:4px;border-radius:2px;background:#C79A3A"></div>
+      </div>
+      <dl style="display:grid;gap:10px">
+        <sc-for list="{{ notes }}" as="n" hint-placeholder-count="4">
+          <div style="background:rgba(244,241,234,0.08);border-radius:8px;padding:18px 20px">
+            <dt style="font-size:16.5px;font-weight:800;color:#F4F1EA">{{ n.title }}</dt>
+            <dd style="margin-top:7px;font-size:14.5px;line-height:1.55;font-weight:600;color:#C9D3C7">{{ n.text }}</dd>
+          </div>
+        </sc-for>
+      </dl>
+    </div>
+  </section>
+
+  <section id="enquire" style="background:#F4F1EA;padding:clamp(44px,6vw,84px) clamp(20px,4vw,54px)">
+    <div style="max-width:1340px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,3.5vw,52px);align-items:start">
+      <div>
+        <h2 style="font-size:clamp(28px,3.4vw,44px);line-height:1.08;font-weight:800;letter-spacing:-0.02em;color:#1E3A2F">Enquire about Turkey</h2>
+        <p style="margin-top:16px;max-width:430px;font-size:16.5px;line-height:1.6;font-weight:600;color:#4C5A50">Tell us your dates and party size and a Senyum consultant will come back with options and indicative pricing.</p>
+        <dl style="margin-top:24px;max-width:430px;display:grid;gap:10px">
+          <div style="background:#FFFFFF;border-radius:8px;padding:16px 18px">
+            <dt style="font-size:12.5px;font-weight:800;color:#7A5A1E">Enquiring about</dt>
+            <dd style="margin-top:5px;font-size:15.5px;font-weight:700;color:#1B2A22">Turkey · 8 days · from SGD 1,800</dd>
+          </div>
+          <div style="background:#FFFFFF;border-radius:8px;padding:16px 18px;display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between">
+            <div>
+              <dt style="font-size:12.5px;font-weight:800;color:#7A5A1E">Email</dt>
+              <dd style="margin-top:5px;font-size:15.5px;font-weight:600;color:#1B2A22">hello@senyum.com.sg</dd>
+            </div>
+            <div>
+              <dt style="font-size:12.5px;font-weight:800;color:#7A5A1E">WhatsApp</dt>
+              <dd style="margin-top:5px;font-size:15.5px;font-weight:600;color:#1B2A22">+65 8900 1305</dd>
+            </div>
+          </div>
+        </dl>
+      </div>
+      <form onSubmit="{{ submitEnquiry }}" style="background:#FFFFFF;border-radius:8px;padding:clamp(20px,2.4vw,32px);box-shadow:0 14px 34px rgba(30,58,47,0.1)">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+          <label style="display:grid;gap:6px">
+            <span style="font-size:12.5px;font-weight:700;color:#566159">Name</span>
+            <input type="text" placeholder="Full name" style="padding:14px;border:2px solid #DAD4C6;border-radius:8px;font-size:15px;width:100%;background:#F4F1EA" />
+          </label>
+          <label style="display:grid;gap:6px">
+            <span style="font-size:12.5px;font-weight:700;color:#566159">Email</span>
+            <input type="email" placeholder="you@example.com" style="padding:14px;border:2px solid #DAD4C6;border-radius:8px;font-size:15px;width:100%;background:#F4F1EA" />
+          </label>
+          <label style="display:grid;gap:6px">
+            <span style="font-size:12.5px;font-weight:700;color:#566159">Phone</span>
+            <input type="tel" placeholder="+65" style="padding:14px;border:2px solid #DAD4C6;border-radius:8px;font-size:15px;width:100%;background:#F4F1EA" />
+          </label>
+          <label style="display:grid;gap:6px">
+            <span style="font-size:12.5px;font-weight:700;color:#566159">Travellers</span>
+            <input type="number" min="1" placeholder="2" style="padding:14px;border:2px solid #DAD4C6;border-radius:8px;font-size:15px;width:100%;background:#F4F1EA" />
+          </label>
+          <label style="display:grid;gap:6px">
+            <span style="font-size:12.5px;font-weight:700;color:#566159">Preferred month</span>
+            <select style="padding:14px;border:2px solid #DAD4C6;border-radius:8px;font-size:15px;width:100%;background:#F4F1EA;font-weight:600">
+              <option>Flexible</option>
+              <option>January</option>
+              <option>February</option>
+              <option>March</option>
+              <option>April</option>
+              <option>May</option>
+              <option>June</option>
+              <option>July</option>
+              <option>August</option>
+              <option>September</option>
+              <option>October</option>
+              <option>November</option>
+              <option>December</option>
+            </select>
+          </label>
+          <label style="display:grid;gap:6px">
+            <span style="font-size:12.5px;font-weight:700;color:#566159">Trip type</span>
+            <select style="padding:14px;border:2px solid #DAD4C6;border-radius:8px;font-size:15px;width:100%;background:#F4F1EA;font-weight:600">
+              <option>Group departure</option>
+              <option>Private family trip</option>
+              <option>Islamic heritage focus</option>
+              <option>Honeymoon</option>
+              <option>Corporate group</option>
+            </select>
+          </label>
+        </div>
+        <label style="display:grid;gap:6px;margin-top:14px">
+          <span style="font-size:12.5px;font-weight:700;color:#566159">Anything we should plan around?</span>
+          <textarea rows="4" placeholder="Dietary needs beyond halal, mobility, room configuration, children's ages" style="padding:14px;border:2px solid #DAD4C6;border-radius:8px;font-size:15px;width:100%;background:#F4F1EA;resize:vertical"></textarea>
+        </label>
+        <button type="submit" style="margin-top:18px;width:100%;background:#1E3A2F;color:#F4F1EA;border:0;border-radius:8px;padding:18px;font-size:16px;font-weight:800;cursor:pointer;min-height:54px" style-hover="background:#C79A3A;color:#1B2A22">Send enquiry</button>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <p style="margin-top:14px;background:#F4F1EA;border:2px solid #1E3A2F;border-radius:8px;padding:15px;font-size:14.5px;line-height:1.5;font-weight:700;color:#1E3A2F">Demonstration mode — nothing was sent. The live form will route to Senyum after launch.</p>
+        </sc-if>
+        <p style="margin-top:12px;font-size:12.5px;line-height:1.5;font-weight:600;color:#566159">Prototype form. Submissions are disabled and are not delivered to the live Senyum email or WhatsApp account.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer style="background:#1E3A2F;color:#D9DFD4;padding:clamp(40px,5vw,68px) clamp(20px,4vw,54px) 0">
+    <div style="max-width:1340px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:clamp(22px,3vw,44px);padding-bottom:36px">
+        <div>
+          <img src="https://senyum.com.sg/wp-content/uploads/2023/06/Senyum-logo-Normal-red-colour.png" alt="Senyum Travel" style="height:78px;width:auto;display:block;background:#F4F1EA;border-radius:8px;padding:8px" />
+          <p style="margin-top:16px;font-size:14px;line-height:1.7;font-weight:600;color:#A8B5AB;max-width:274px">Senyum Pte. Ltd.<br />Travel Agent Licence TA03740 · Active<br />80 Changi Road, #02-29 Centropod @ Changi, Singapore 419715</p>
+        </div>
+        <div>
+          <h3 style="font-size:15px;font-weight:800;color:#FFFFFF">Destinations</h3>
+          <ul style="margin-top:14px;display:grid;gap:10px">
+            <li><a href="#top" style="font-size:14.5px;font-weight:600;color:#D9DFD4" style-hover="color:#C79A3A">Turkey</a></li>
+            <li><a href="Senyum-Tour-China.html" style="font-size:14.5px;font-weight:600;color:#D9DFD4" style-hover="color:#C79A3A">China</a></li>
+            <li><a href="Senyum-Homepage.html" style="font-size:14.5px;font-weight:600;color:#D9DFD4" style-hover="color:#C79A3A">Uzbekistan</a></li>
+            <li><a href="Senyum-Homepage.html" style="font-size:14.5px;font-weight:600;color:#D9DFD4" style-hover="color:#C79A3A">All destinations</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size:15px;font-weight:800;color:#FFFFFF">Company</h3>
+          <ul style="margin-top:14px;display:grid;gap:10px">
+            <li><a href="Senyum-Homepage.html" style="font-size:14.5px;font-weight:600;color:#D9DFD4" style-hover="color:#C79A3A">About Senyum</a></li>
+            <li><a href="#enquire" style="font-size:14.5px;font-weight:600;color:#D9DFD4" style-hover="color:#C79A3A">Contact &amp; enquiry</a></li>
+            <li><a href="Senyum-Tour-China.html" style="font-size:14.5px;font-weight:600;color:#D9DFD4" style-hover="color:#C79A3A">Sample tour page</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size:15px;font-weight:800;color:#FFFFFF">Policies</h3>
+          <ul style="margin-top:14px;display:grid;gap:10px">
+            <li><a href="#top" style="font-size:14.5px;font-weight:600;color:#D9DFD4" style-hover="color:#C79A3A">Privacy policy (placeholder)</a></li>
+            <li><a href="#top" style="font-size:14.5px;font-weight:600;color:#D9DFD4" style-hover="color:#C79A3A">Booking terms (placeholder)</a></li>
+            <li><a href="#top" style="font-size:14.5px;font-weight:600;color:#D9DFD4" style-hover="color:#C79A3A">Cancellation &amp; refund (placeholder)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(217,223,212,0.24);padding:18px 0 26px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;justify-content:space-between">
+        <p style="font-size:13px;font-weight:600;color:#BCC7BC">© 2026 Senyum Pte. Ltd. Travel Agent Licence TA03740.</p>
+        <p style="font-size:13px;font-weight:600;color:#BCC7BC">Destination template · Prototype by AdCendes · Placeholder photography via Wikimedia Commons</p>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+const W = (n, w) => 'https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(n) + '?width=' + w;
+
+class Component extends DCLogic {
+  state = { narrow: typeof window !== 'undefined' && window.innerWidth < 1080, menu: false, sent: false };
+
+  options = [
+    { slot: 'tk-o1', img: W('Hagia Sophia Mosque.jpg', 1200), alt: 'Hagia Sophia in Istanbul, Turkey', badge: 'Group tour', title: 'Turkey Islamic Heritage Journey', text: 'Guided visits to historic mosques and Islamic sites, with halal dining arranged daily.', meta: '8 days', price: 'From SGD 1,800', cta: 'View tour' },
+    { slot: 'tk-o2', img: W('Cappadocia.jpg', 1200), alt: 'Rock formations and cave dwellings in Cappadocia, Turkey', badge: 'Private tour', title: 'Turkey Private Family Tour', text: 'The same route on your own dates, with a private vehicle and guide and the pace set by your party.', meta: 'Your own dates', price: 'Price on enquiry', cta: 'Enquire' },
+    { slot: 'tk-o3', img: W('Blue Mosque Istanbul.jpg', 1200), alt: 'The Sultan Ahmed Mosque in Istanbul, Turkey', badge: 'Corporate', title: 'Turkey Corporate Programme', text: 'Retreats and incentive travel for Singapore-based teams, with group logistics handled end to end.', meta: 'Custom length', price: 'Quote on brief', cta: 'Request quote' }
+  ];
+
+  places = [
+    { slot: 'tk-p1', img: W('Blue Mosque Istanbul.jpg', 900), alt: 'The Sultan Ahmed Mosque in Istanbul', name: 'Istanbul', text: 'The Sultan Ahmed Mosque, Hagia Sophia and the Bosphorus, walkable in two or three days.' },
+    { slot: 'tk-p2', img: W('Hot air balloons over Cappadocia.jpg', 900), alt: 'Hot air balloons over Cappadocia at sunrise', name: 'Cappadocia', text: 'Valleys, cave dwellings and the balloon flights at sunrise, weather permitting.' },
+    { slot: 'tk-p3', img: W('Hagia Sophia Mosque.jpg', 900), alt: 'Hagia Sophia seen from the square', name: 'Heritage sites', text: 'Mosques, museums and Ottoman-era architecture with a guide who knows the ground.' },
+    { slot: 'tk-p4', img: W('Cappadocia.jpg', 900), alt: 'Rock formations in the Cappadocia landscape', name: 'The landscape', text: 'Long drives broken by prayer stops, with scenery that carries the journey between cities.' }
+  ];
+
+  notes = [
+    { title: 'Halal meals', text: 'Halal food is widely available; we still confirm restaurants for each day of the itinerary.' },
+    { title: 'Prayer time', text: 'Mosques are plentiful in the cities, and prayer stops are planned into longer transfers.' },
+    { title: 'Family pacing', text: 'Itineraries are built to avoid back-to-back long days where children are travelling.' },
+    { title: 'Visas and documents', text: 'We advise on the current entry requirements for Singapore passport holders before booking.' }
+  ];
+
+  componentDidMount() {
+    this._onResize = () => {
+      const n = window.innerWidth < 1080;
+      if (n !== this.state.narrow) this.setState({ narrow: n, menu: false });
+    };
+    window.addEventListener('resize', this._onResize);
+    this._onResize();
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this._onResize); }
+
+  renderVals() {
+    return {
+      wide: !this.state.narrow,
+      narrow: this.state.narrow,
+      colW: this.state.narrow ? 'min(560px,86vw)' : 'min(500px,38vw)',
+      subW: this.state.narrow ? 'min(520px,82vw)' : 'min(470px,36vw)',
+      menuOpen: this.state.menu,
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      options: this.options,
+      places: this.places,
+      notes: this.notes,
+      sent: this.state.sent,
+      submitEnquiry: e => { e.preventDefault(); this.setState({ sent: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
