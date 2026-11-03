@@ -87,7 +87,7 @@
   const pickers = [];
   let activePicker = null;
   const icon = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m7 10 5 5 5-5" /></svg>';
-  document.querySelectorAll('#hero-destination, #package-search select').forEach((select, index) => {
+  document.querySelectorAll('#hero-destination').forEach((select, index) => {
     const wrap = document.createElement('div');
     wrap.className = 'destination-picker';
     select.before(wrap);

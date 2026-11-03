@@ -459,6 +459,15 @@ p{max-width:none !important;text-wrap:wrap;white-space:normal}
  .hero-media-mark--zaobao,.hero-media-mark--berita{width:clamp(52px,16vw,66px);max-height:25px}
 }
 @media(max-height:600px) and (min-width:768px){.hero-mark-row{gap:18px}.hero-press{padding-left:18px;gap:4px}.hero-press__label{font-size:8px}.hero-press__logos{gap:16px}}
+
+/* Two direct gallery choices replace the destination-filter panel. */
+.tour-switch{display:inline-flex;gap:6px;padding:6px;background:#e5f4eb;border:1px solid #c6dfd2;border-radius:14px}
+.tour-switch button{min-height:46px;padding:12px 28px;border:0;border-radius:9px;background:transparent;color:#103f35;font:inherit;font-size:15px;font-weight:800;cursor:pointer}
+.tour-switch button[aria-pressed='true']{background:#08735b;color:white;box-shadow:0 2px 5px rgba(6,55,40,.1)}
+.tour-switch button:not([aria-pressed='true']):hover{background:#d3eddf}
+@media(max-width:767px){.tour-switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;gap:4px;padding:5px}.tour-switch button{padding:11px 12px;font-size:14px}}
+header .direct-tour-link{padding:10px 12px;font-size:14px;font-weight:700;color:#103f35;white-space:nowrap}
+header nav[aria-label='Mobile'] .direct-tour-link{display:block;padding:17px 14px;border-radius:8px;background:#f8fbf8;font-size:16px}
 </style></helmet>
 <div style="min-height:100vh;background:#f8fbf8">
 
@@ -483,20 +492,7 @@ p{max-width:none !important;text-wrap:wrap;white-space:normal}
       <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
       <nav aria-label="Primary" style="display:flex;align-items:center;gap:clamp(2px,0.5vw,8px)">
         <a href="#top" style="font-size:15px;font-weight:700;color:#103f35;padding:10px 12px">Home</a>
-        <div style="position:relative" onMouseEnter="{{ overTours }}" onMouseLeave="{{ leaveNav }}">
-          <button type="button" onClick="{{ toggleTours }}" style="background:none;border:0;padding:10px 12px;display:inline-flex;align-items:center;gap:5px;font-size:15px;font-weight:600;color:#183D35;cursor:pointer" style-hover="color:#103f35">
-            Tours
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
-          </button>
-          <sc-if value="{{ toursOpen }}" hint-placeholder-val="{{ false }}">
-          <div style="position:absolute;top:100%;left:0;margin-top:6px;min-width:238px;background:#FFFFFF;border-radius:8px;padding:8px;box-shadow:0 22px 46px rgba(22,33,31,0.2);display:grid;gap:1px">
-            <a href="#tours" style="padding:12px;font-size:14.5px;font-weight:600;color:#183D35;border-radius:6px" style-hover="background:#e5f4eb;color:#103f35">Group Tours</a>
-            <a href="#custom" style="padding:12px;font-size:14.5px;font-weight:600;color:#183D35;border-radius:6px" style-hover="background:#e5f4eb;color:#103f35">Customised Private Tours</a>
-            <a href="#custom" style="padding:12px;font-size:14.5px;font-weight:600;color:#183D35;border-radius:6px" style-hover="background:#e5f4eb;color:#103f35">Islamic Tours</a>
-            <a href="#tours" style="padding:12px;font-size:14.5px;font-weight:600;color:#183D35;border-radius:6px" style-hover="background:#e5f4eb;color:#103f35">Destinations</a>
-          </div>
-          </sc-if>
-        </div>
+        <a class="direct-tour-link" href="#finder" onClick="{{ pickGroup }}">Group tours</a><a class="direct-tour-link" href="#finder" onClick="{{ pickPrivate }}">Private tours</a>
         <div style="position:relative" onMouseEnter="{{ overUmrah }}" onMouseLeave="{{ leaveNav }}">
           <button type="button" onClick="{{ toggleUmrah }}" style="background:none;border:0;padding:10px 12px;display:inline-flex;align-items:center;gap:5px;font-size:15px;font-weight:600;color:#183D35;cursor:pointer" style-hover="color:#103f35">
             Umrah
@@ -547,18 +543,7 @@ p{max-width:none !important;text-wrap:wrap;white-space:normal}
     <div style="background:#f8fbf8;max-height:72vh;overflow:auto;box-shadow:inset 0 1px 0 rgba(22,33,31,0.1)">
       <nav onClick="{{ closeMobileLink }}" aria-label="Mobile" style="padding:12px clamp(18px,4vw,52px) 26px;display:grid;gap:4px">
         <a href="#top" style="padding:17px 14px;border-radius:8px;background:#103f35;font-size:16px;font-weight:700;color:#FFFFFF">Home</a>
-        <button type="button" onClick="{{ toggleGroupTours }}" style="background:#FFFFFF;border:0;border-radius:8px;padding:17px 14px;display:flex;align-items:center;justify-content:space-between;font-size:16px;font-weight:700;color:#183D35;cursor:pointer;text-align:left">
-          Tours
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
-        </button>
-        <sc-if value="{{ mTours }}" hint-placeholder-val="{{ false }}">
-        <div style="display:grid;gap:3px;padding:2px 0 6px 12px">
-          <a href="#tours" style="padding:15px 14px;border-radius:8px;background:#e5f4eb;font-size:15px;font-weight:600;color:#183D35">Group Tours</a>
-          <a href="#custom" style="padding:15px 14px;border-radius:8px;background:#e5f4eb;font-size:15px;font-weight:600;color:#183D35">Customised Private Tours</a>
-          <a href="#custom" style="padding:15px 14px;border-radius:8px;background:#e5f4eb;font-size:15px;font-weight:600;color:#183D35">Islamic Tours</a>
-          <a href="#dest" style="padding:15px 14px;border-radius:8px;background:#e5f4eb;font-size:15px;font-weight:600;color:#183D35">Destinations</a>
-        </div>
-        </sc-if>
+        <a class="direct-tour-link" href="#finder" onClick="{{ pickGroup }}">Group tours</a><a class="direct-tour-link" href="#finder" onClick="{{ pickPrivate }}">Private tours</a>
         <button type="button" onClick="{{ toggleGroupUmrah }}" style="background:#FFFFFF;border:0;border-radius:8px;padding:17px 14px;display:flex;align-items:center;justify-content:space-between;font-size:16px;font-weight:700;color:#183D35;cursor:pointer;text-align:left">
           Umrah
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
@@ -608,26 +593,12 @@ p{max-width:none !important;text-wrap:wrap;white-space:normal}
 
 
 
-  <section class="journey-layer" id="finder"><div class="journey-container"><div class="section-heading"><div><h2>Find your next journey.</h2><p>Where will your sense of adventure take you?</p></div></div><div class="package-search" id="package-search" style="background:#103f35;padding:clamp(26px,3.5vw,44px) clamp(18px,4vw,52px)">
-    <div style="max-width:1400px;margin:0 auto">
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px">
-        <sc-for list="{{ modes }}" as="m" hint-placeholder-count="5">
-          <button type="button" onClick="{{ m.pick }}" style="border:2px solid rgba(255,255,255,0.34);border-radius:8px;padding:12px 20px;font-size:14.5px;font-weight:800;cursor:pointer;min-height:46px;background:{{ m.bg }};color:{{ m.fg }}">{{ m.label }}</button>
-        </sc-for>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;align-items:end">
-        <label style="display:grid;gap:7px">
-          <span style="font-size:13px;font-weight:700;color:#BFD6CF">Destination</span>
-          <select onChange="{{ setDest }}" value="{{ selectedDest }}" style="padding:15px;border:0;border-radius:8px;background:#FFFFFF;font-size:15px;width:100%;font-weight:700;color:#183D35"><option value="Any destination">Any destination</option><option>Bosnia</option><option>Brunei</option><option>Cambodia</option><option>China</option><option>Egypt</option><option>Indonesia</option><option>Japan</option><option>Jordan</option><option>Korea</option><option>Malaysia</option><option>Maldives</option><option>Pakistan</option><option>Taiwan</option><option>Thailand</option><option>Turkey</option><option>Uzbekistan</option><option>Vietnam</option></select>
-        </label>
-
-
-
-        <button type="button" onClick="{{ findTours }}" style="background:#d9ed92;color:#183D35;border:0;border-radius:8px;padding:16px 26px;font-size:15.5px;font-weight:800;cursor:pointer;min-height:52px" style-hover="background:#FFFFFF">Find packages</button>
-      </div>
-      <p style="margin-top:14px;font-size:13px;font-weight:600;color:#A9C5BC">{{ finderNote }}</p>
-    </div>
-  </div><div id="tours" class="package-results" style="background:#f8fbf8;padding:clamp(48px,6vw,88px) clamp(18px,4vw,52px)">
+  <section class="journey-layer" id="finder"><div class="journey-container"><div class="section-heading"><div><h2>Find your next journey.</h2><p>Where will your sense of adventure take you?</p></div></div><div id="package-search" class="tour-switch" role="group" aria-label="Choose your tour type">
+  <sc-for list="{{ modes }}" as="m" hint-placeholder-count="2">
+    <button type="button" onClick="{{ m.pick }}" aria-pressed="{{ m.pressed }}" aria-controls="tours">{{ m.label }}</button>
+  </sc-for>
+</div>
+<div id="tours" class="package-results" style="background:#f8fbf8;padding:clamp(48px,6vw,88px) clamp(18px,4vw,52px)">
     <div style="max-width:1400px;margin:0 auto">
       <div style="display:flex;flex-wrap:wrap;gap:14px 32px;align-items:flex-end;justify-content:space-between">
         <div style="max-width:660px">
@@ -876,7 +847,7 @@ class Component extends DCLogic {
   state = {
     narrow: typeof window !== 'undefined' && window.innerWidth < 1180,
     menu: false, mTours: false, mUmrah: false, dropdown: null, search: false,
-    visibleCount: 6, mode: 'all', dest: 'Any destination', applied: false, sent: false
+    visibleCount: 6, mode: 'group', dest: 'Any destination', applied: false, sent: false
   };
 
   tours = [
@@ -1038,7 +1009,7 @@ class Component extends DCLogic {
   const pickers = [];
   let activePicker = null;
   const icon = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m7 10 5 5 5-5" /></svg>';
-  document.querySelectorAll('#hero-destination, #package-search select').forEach((select, index) => {
+  document.querySelectorAll('#hero-destination').forEach((select, index) => {
     const wrap = document.createElement('div');
     wrap.className = 'destination-picker';
     select.before(wrap);
@@ -1200,6 +1171,8 @@ class Component extends DCLogic {
  reduce.addEventListener('change',()=>{if(reduce.matches)running.forEach(animation=>animation.cancel())});
 })();
 
+const tourRoute = new URLSearchParams(location.search).get('tour'); if (tourRoute === 'private' || tourRoute === 'group') { this.setState({mode: tourRoute, visibleCount: 6, dest: 'Any destination', applied: false}); requestAnimationFrame(() => document.querySelector('.hero-scroll').click()); }
+
     this._onResize = () => {
       const n = window.innerWidth < 1180;
       if (n !== this.state.narrow) this.setState({ narrow: n, menu: false, dropdown: null });
@@ -1213,7 +1186,7 @@ class Component extends DCLogic {
 
   renderVals() {
     const st = this.state;
-    const modeList = [['all', 'All tours'], ['group', 'Group'], ['private', 'Customised private'], ['umrah', 'Umrah'], ['corporate', 'Corporate']];
+    const modeList = [['group', 'Group tours'], ['private', 'Private tours']];
     let cards;
     if (st.mode === 'umrah') cards = this.umrahCards;
     else if (st.mode === 'corporate') cards = this.corpCards;
@@ -1233,7 +1206,7 @@ class Component extends DCLogic {
       toursOpen: st.dropdown === 'tours',
       umrahOpen: st.dropdown === 'umrah',
       modes: modeList.map(([id, label]) => ({
-        label,
+        label, pressed: st.mode === id ? 'true' : 'false',
         bg: st.mode === id ? '#103f35' : 'transparent',
         fg: st.mode === id ? '#FFFFFF' : '#103f35',
         pick: () => this.setMode(id)
@@ -1261,16 +1234,16 @@ class Component extends DCLogic {
       toggleTours: () => this.setState(s => ({ dropdown: s.dropdown === 'tours' ? null : 'tours' })),
       toggleUmrah: () => this.setState(s => ({ dropdown: s.dropdown === 'umrah' ? null : 'umrah' })),
       toggleSearch: () => { this.setState({ menu: false, dropdown: null }); document.querySelector('.hero-scroll').click(); },
-      heroSearch: e => { e.preventDefault(); const dest = e.currentTarget.elements.destination.value; this.setState({ mode: 'all', dest, applied: true }); document.querySelector('#package-search select').value = dest; document.querySelector('.hero-scroll').click(); },
-      pickGroup: () => { this.setState({ visibleCount: 6, mode: 'group', dest: 'Any destination', applied: false }); document.querySelector('#package-search select').value = 'Any destination'; },
-      pickPrivate: () => { this.setState({ visibleCount: 6, mode: 'private', dest: 'Any destination', applied: false }); document.querySelector('#package-search select').value = 'Any destination'; },
+      heroSearch: e => { e.preventDefault(); const dest = e.currentTarget.elements.destination.value; this.setState({ mode: this.state.mode === 'private' ? 'private' : 'group', dest, applied: true, visibleCount: 6 }); document.querySelector('.hero-scroll').click(); },
+      pickGroup: () => { this.setState({ visibleCount: 6, mode: 'group', dest: 'Any destination', applied: false }); },
+      pickPrivate: () => { this.setState({ visibleCount: 6, mode: 'private', dest: 'Any destination', applied: false }); },
       closeMobileLink: e => { if (e.target.closest('a')) this.setState({ menu: false }); },
       toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
       toggleGroupTours: () => this.setState(s => ({ mTours: !s.mTours })),
       toggleGroupUmrah: () => this.setState(s => ({ mUmrah: !s.mUmrah })),
       setDest: e => this.setState({ dest: e.target.value }),
       findTours: () => { this.setState({ applied: true, visibleCount: 6 }); requestAnimationFrame(() => document.querySelector('.hero-scroll').click()); },
-      reset: () => { this.setState({ visibleCount: 6, mode: 'all', dest: 'Any destination', applied: false }); document.querySelector('#package-search select').value = 'Any destination'; },
+      reset: () => { this.setState({ visibleCount: 6, mode: 'group', dest: 'Any destination', applied: false }); },
       submitEnquiry: e => { e.preventDefault(); this.setState({ sent: true }); }
     };
   }

@@ -423,3 +423,12 @@ p{max-width:none !important;text-wrap:wrap;white-space:normal}
  .hero-media-mark--zaobao,.hero-media-mark--berita{width:clamp(52px,16vw,66px);max-height:25px}
 }
 @media(max-height:600px) and (min-width:768px){.hero-mark-row{gap:18px}.hero-press{padding-left:18px;gap:4px}.hero-press__label{font-size:8px}.hero-press__logos{gap:16px}}
+
+/* Two direct gallery choices replace the destination-filter panel. */
+.tour-switch{display:inline-flex;gap:6px;padding:6px;background:#e5f4eb;border:1px solid #c6dfd2;border-radius:14px}
+.tour-switch button{min-height:46px;padding:12px 28px;border:0;border-radius:9px;background:transparent;color:#103f35;font:inherit;font-size:15px;font-weight:800;cursor:pointer}
+.tour-switch button[aria-pressed='true']{background:#08735b;color:white;box-shadow:0 2px 5px rgba(6,55,40,.1)}
+.tour-switch button:not([aria-pressed='true']):hover{background:#d3eddf}
+@media(max-width:767px){.tour-switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;gap:4px;padding:5px}.tour-switch button{padding:11px 12px;font-size:14px}}
+header .direct-tour-link{padding:10px 12px;font-size:14px;font-weight:700;color:#103f35;white-space:nowrap}
+header nav[aria-label='Mobile'] .direct-tour-link{display:block;padding:17px 14px;border-radius:8px;background:#f8fbf8;font-size:16px}

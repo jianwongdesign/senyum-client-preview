@@ -46,3 +46,4 @@ p{max-width:none;text-wrap:wrap;white-space:normal}
  .button:hover svg,.service-grid>a:hover svg,.office a:hover svg{transform:translateX(4px)}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important}}
+@media(min-width:901px) and (max-width:1100px){.site-nav{gap:12px;font-size:14px}.site-nav>.button{padding-inline:16px}.header-inner{gap:16px}.brand img{width:110px}}
