@@ -1,0 +1,5 @@
+{
+  "edit_tool": "built-in image_gen",
+  "prompt": "Use case: background-extraction. Edit target: the supplied staff portrait. Remove only its background to actual transparent alpha with a clean natural edge. Keep the exact real person's face, expression, skin, hairstyle or head covering, glasses, clothing, pose, proportions and existing crop unchanged. Do not retouch, redraw, beautify, add missing body parts, change clothing, or add shadow. Remove background edge remnants. This is an identity-preserving website portrait cutout.",
+  "original": "../ustaz-latief.webp"
+}
