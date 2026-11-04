@@ -5,5 +5,18 @@
  expand.addEventListener('click',()=>{const open=!days.every(day=>day.open);days.forEach(day=>day.open=open);sync()});
  days.forEach(day=>day.addEventListener('toggle',sync));
  const links=[...document.querySelectorAll('.tour-sections a')];
- if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{const visible=entries.find(entry=>entry.isIntersecting);if(!visible)return;links.forEach(link=>{if(link.hash==='#'+visible.target.id)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current')})},{rootMargin:'-120px 0px -55% 0px'});links.forEach(link=>observer.observe(document.querySelector(link.hash)))}
+ const sections=links.map(link=>document.querySelector(link.hash));
+ let frame=0;
+ const update=()=>{
+  frame=0;
+  const boundary=document.querySelector('.site-header').offsetHeight+80;
+  let current=0;
+  sections.forEach((section,i)=>{if(section.getBoundingClientRect().top<=boundary)current=i});
+  links.forEach((link,i)=>{if(i===current)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current')});
+ };
+ const schedule=()=>{if(!frame)frame=requestAnimationFrame(update)};
+ addEventListener('scroll',schedule,{passive:true});
+ addEventListener('resize',schedule,{passive:true});
+ days.forEach(day=>day.addEventListener('toggle',schedule));
+ update();
 })();
