@@ -48,6 +48,8 @@ p{max-width:none;text-wrap:wrap;white-space:normal}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important}}
 @media(min-width:901px) and (max-width:1100px){.site-nav{gap:12px;font-size:14px}.site-nav>.button{padding-inline:16px}.header-inner{gap:16px}.brand img{width:110px}}
 
+.footer-bottom p{display:flex;flex-wrap:wrap;gap:4px 12px}
+
 /* Mobile footer: brand and credentials share a row; navigation and credits align below. */
 @media(max-width:767px){
  .about-footer{padding-top:28px}
