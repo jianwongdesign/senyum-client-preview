@@ -7,3 +7,9 @@
 @media(prefers-reduced-motion:reduce){.day-toggle{transition:none}}
 
 .tour-mobile-enquiry{display:none}@media(max-width:900px){.tour-mobile-enquiry{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:18px}.tour-mobile-enquiry>span{font-size:12px;color:var(--muted)}.tour-mobile-enquiry .button{font-size:12px;padding-inline:16px;gap:16px}}
+
+/* Quiet section headings and supportive, non-link highlight marks. */
+.tour-title-row h1,.tour-reading h2,.trip-card h2{margin-top:0}
+.tour-highlights .highlight-check{display:grid;place-items:center;width:24px;height:24px;flex:0 0 24px;background:#e5f4eb;border-radius:50%;color:#08735b}
+.tour-highlights .highlight-check svg{width:15px;height:15px;stroke-width:2;fill:none}
+@media(max-width:600px){.tour-highlights .highlight-check{width:20px;height:20px;flex-basis:20px}.tour-highlights .highlight-check svg{width:13px;height:13px}}
