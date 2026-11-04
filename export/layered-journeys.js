@@ -5,17 +5,23 @@
   const updateHeader = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
   window.addEventListener('scroll', updateHeader, { passive: true });
   updateHeader();
+  const navigate = (target, behavior = 'smooth') => {
+    // The first panel's normal-flow position does not change when the hero sticks.
+    const destination = target.id === 'top' ? 0 : target.getBoundingClientRect().top + window.scrollY - header.firstElementChild.offsetHeight - 16;
+    window.scrollTo({ top: Math.max(0, destination), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : behavior });
+  };
+  window.senyumNavigate = navigate;
   document.addEventListener('click', event => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const anchor = event.target.closest('a[href^="#"]');
     if (!anchor) return;
     const target = document.getElementById(anchor.getAttribute('href').slice(1));
     if (!target) return;
     event.preventDefault();
-    document.documentElement.classList.add('journey-measuring');
-    const destination = target.getBoundingClientRect().top + window.scrollY - header.firstElementChild.offsetHeight - 16;
-    document.documentElement.classList.remove('journey-measuring');
-    history.replaceState(null, '', anchor.getAttribute('href'));
-    window.scrollTo({ top: Math.max(0, destination), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    const route = new URL(location.href);
+    route.hash = anchor.hash;
+    history.replaceState(null, '', route);
+    navigate(target);
   });
 })();
 
@@ -205,4 +211,18 @@
   document.addEventListener('submit', () => requestAnimationFrame(() => pickers.forEach(p => p.sync())));
   document.addEventListener('wheel', event => { if (activePicker && !activePicker.popup.contains(event.target)) activePicker.close(); }, { passive: true });
   window.addEventListener('resize', () => { if (activePicker) activePicker.position(); });
+})();
+
+/* Predictable dismissal for the Home navigation, including keyboard users. */
+(() => {
+  const close = () => this.setState({menu:false,dropdown:null,mUmrah:false});
+  document.addEventListener('click', event => {
+    if (!event.target.closest('header') && (this.state.menu || this.state.dropdown)) close();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || !(this.state.menu || this.state.dropdown)) return;
+    const trigger = this.state.menu ? document.querySelector('button[aria-controls="mobile-navigation"]') : document.querySelector('button[aria-controls="umrah-navigation"]');
+    close();
+    trigger?.focus();
+  });
 })();

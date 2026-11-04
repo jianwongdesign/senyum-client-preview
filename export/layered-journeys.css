@@ -157,7 +157,7 @@ footer img.senyum-brand-logo { width:150px !important; height:auto !important; b
  #top.journey-layer { position:relative !important; top:auto !important; }
  *,*::before,*::after { transition:none !important; }
 }
-html.journey-measuring #top.journey-layer { position:relative !important; top:auto !important; }
+
 
 .senyum-brand-logo { filter:brightness(0) invert(1); }
 header .senyum-brand-logo--colour { filter:none; }
