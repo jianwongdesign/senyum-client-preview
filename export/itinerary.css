@@ -13,3 +13,12 @@
 .tour-highlights .highlight-check{display:grid;place-items:center;width:24px;height:24px;flex:0 0 24px;background:#e5f4eb;border-radius:50%;color:#08735b}
 .tour-highlights .highlight-check svg{width:15px;height:15px;stroke-width:2;fill:none}
 @media(max-width:600px){.tour-highlights .highlight-check{width:20px;height:20px;flex-basis:20px}.tour-highlights .highlight-check svg{width:13px;height:13px}}
+
+.day-content>p+p{margin-top:14px}
+.tour-cover--contain{background:#e5f4eb}
+.tour-cover--contain img{object-fit:contain;padding:18px 18px 54px}
+.tour-cover--contain:after{display:none}
+.tour-cover--contain figcaption{color:#103f35;inset:auto 24px 16px}
+.photo-credit summary{cursor:pointer;min-height:32px;display:list-item;padding-block:6px}
+.photo-credit p{padding-top:8px}
+@media(max-width:600px){.tour-cover--contain img{height:280px;padding:10px 10px 44px}.day-content>p+p{margin-top:12px}.tour-cover--contain figcaption{inset:auto 16px 12px}}

@@ -1,8 +1,9 @@
 (() => {
  const days=[...document.querySelectorAll('.itinerary-day')];
  const expand=document.querySelector('.expand-days');
- const sync=()=>{const all=days.every(day=>day.open);expand.setAttribute('aria-expanded',String(all));expand.textContent=all?'Collapse all days':'Expand all days'};
- expand.addEventListener('click',()=>{const open=!days.every(day=>day.open);days.forEach(day=>day.open=open);sync()});
+ const noun=expand?.dataset.noun||'days';
+ const sync=()=>{if(!expand)return;const all=days.every(day=>day.open);expand.setAttribute('aria-expanded',String(all));expand.textContent=(all?'Collapse all ':'Expand all ')+noun};
+ expand?.addEventListener('click',()=>{const open=!days.every(day=>day.open);days.forEach(day=>day.open=open);sync()});
  days.forEach(day=>day.addEventListener('toggle',sync));
  const links=[...document.querySelectorAll('.tour-sections a')];
  const sections=links.map(link=>document.querySelector(link.hash));

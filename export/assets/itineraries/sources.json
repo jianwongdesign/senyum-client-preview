@@ -1,0 +1,129 @@
+{
+  "yunnan": {
+    "image": "assets/itineraries/yunnan.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2024/11/Senyum-Travel-Halal-China-Kunming-Dali-Tour-3-1024x546.jpg",
+    "page": "https://senyum.com.sg/china-kunming-dali-lijiang-7-days"
+  },
+  "harbin": {
+    "image": "assets/itineraries/harbin.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2024/12/Senyum-Travel-Halal-China-Beijing-Harbin-Winter-Package-Tour-1-1024x610.jpg",
+    "page": "https://senyum.com.sg/china-beijing-harbin-7-days/"
+  },
+  "uzbekistan": {
+    "image": "assets/itineraries/uzbekistan.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2024/05/Usbekistan-Senyum-Travel.jpg",
+    "page": "https://senyum.com.sg/uzbekistan/"
+  },
+  "turkey": {
+    "image": "assets/itineraries/turkey.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2024/03/istanbul-turkey0616-68fdff743e434ae68541a94c54a6ddb5-1024x640.jpg",
+    "page": "https://senyum.com.sg/turkey/"
+  },
+  "vietnam": {
+    "image": "assets/itineraries/vietnam.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2023/06/al-noor-mosque-hanoi.jpg",
+    "page": "https://senyum.com.sg/hanoi-halong-muslim-tour-5-days"
+  },
+  "seoul": {
+    "image": "assets/itineraries/seoul.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2024/03/Senyum-Travel-Korea-Seoul-1.jpg",
+    "page": "https://senyum.com.sg/korea-seoul-5-days/"
+  },
+  "busan": {
+    "image": "assets/itineraries/busan.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2023/09/gamcheon-culture-village-busan-south-korea-1149825040-2bc1e16a08c14ee9add5aae5f0e8e9b9.jpg",
+    "page": "https://senyum.com.sg/korea-busan-seoul-8-days/"
+  },
+  "jeju": {
+    "image": "assets/itineraries/jeju.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2023/09/jeju-island_62110.jpg",
+    "page": "https://senyum.com.sg/korea-jeju-seoul-8-days/"
+  },
+  "sabah": {
+    "image": "assets/itineraries/sabah.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2024/09/Sabah-Senyum-Travel-1-1024x795.jpg",
+    "page": "https://senyum.com.sg/malaysia/"
+  },
+  "brunei": {
+    "image": "assets/itineraries/brunei.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2025/01/Brunei-SENYUM-TRAVEL-1.jpg",
+    "page": "https://senyum.com.sg/brunei/"
+  },
+  "bosnia": {
+    "image": "assets/itineraries/bosnia.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2026/02/Bosnia-1024x1024.jpg",
+    "page": "https://senyum.com.sg/bosnia/"
+  },
+  "pakistan": {
+    "image": "assets/itineraries/pakistan.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2023/10/Senyum-Travel-Pakistan-img-3-768x433.jpg",
+    "page": "https://senyum.com.sg/pakistan/"
+  },
+  "egypt": {
+    "image": "assets/itineraries/egypt.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2024/03/Egypt-10-days-Senyum-Travel-2-1024x819.jpg",
+    "page": "https://senyum.com.sg/egypt/"
+  },
+  "jordan": {
+    "image": "assets/itineraries/jordan.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2024/02/Jordan-Senyum-Travel-2.jpg",
+    "page": "https://senyum.com.sg/jordan/"
+  },
+  "chiang-mai": {
+    "image": "assets/itineraries/chiang-mai.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2024/06/chiang-mai-temple-1024x683.jpg",
+    "page": "https://senyum.com.sg/thailand/"
+  },
+  "hat-yai": {
+    "image": "assets/itineraries/hat-yai.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2024/06/songkhla-central-mosque.jpg",
+    "page": "https://senyum.com.sg/thailand/"
+  },
+  "bangkok": {
+    "image": "assets/itineraries/bangkok.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2023/10/Senyum-Travel-Thailand-temple-4128662_1280-1024x682.jpg",
+    "page": "https://senyum.com.sg/thailand/"
+  },
+  "toba": {
+    "image": "assets/itineraries/toba.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2024/03/Berastagi.jpg",
+    "page": "https://senyum.com.sg/lake-toba-north-sumatra-6-days/"
+  },
+  "lombok": {
+    "image": "assets/itineraries/lombok.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2024/06/lombok.jpg",
+    "page": "https://senyum.com.sg/lombok-4-days/"
+  },
+  "batam": {
+    "image": "assets/itineraries/batam.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2023/09/fisabilillah-barelang-bridge-batam-indonesia-shutterstock_1482544481.jpg_2064957538-1024x684.jpg",
+    "page": "https://senyum.com.sg/batam/"
+  },
+  "perak": {
+    "image": "assets/itineraries/perak.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2024/02/Floating-Mosque-Pangkor-Senyum-Travel.jpg",
+    "page": "https://senyum.com.sg/perak-4-days/"
+  },
+  "cambodia": {
+    "image": "assets/itineraries/cambodia.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2023/08/Cambodia5-1024x556.jpg",
+    "page": "https://senyum.com.sg/cambodia/"
+  },
+  "maldives": {
+    "image": "assets/itineraries/maldives.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2023/08/8408665095_b5ca391142_k-23-1024x281.jpg",
+    "page": "https://senyum.com.sg/maldives/"
+  },
+  "perak-royal": {
+    "image": "assets/itineraries/perak-royal.jpg",
+    "source": "https://senyum.com.sg/wp-content/uploads/2024/02/istana-kenangan-Senyum-Travel.jpg",
+    "page": "https://senyum.com.sg/malaysia/"
+  },
+  "kaaba": {
+    "image": "assets/itineraries/kaaba.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Panoramic_View_of_Kaaba_-_panoramio.jpg",
+    "credit": "Tevfik Teker",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
+  }
+}
