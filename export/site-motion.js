@@ -1,38 +1,63 @@
-/* Small, one-time reveals start before content enters the viewport. */
+/* Shared, interruptible disclosure motion. Content stays visible without JS. */
 (() => {
  if (window.senyumMotionReady) return;
  window.senyumMotionReady = true;
  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
- const running = new Set();
- const animate = element => {
-  if (reduce.matches || !element.animate) return;
-  const animation = element.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:380,easing:'cubic-bezier(.22,1,.36,1)'});
-  running.add(animation);
-  animation.finished.catch(()=>{}).finally(()=>running.delete(animation));
- };
+ const ease = 'cubic-bezier(.16,1,.3,1)';
+ const active = new Map();
  const loader = document.querySelector('#senyum-loading');
  if (loader) {
   if (reduce.matches || !loader.animate) loader.remove();
-  else loader.animate([{opacity:1},{opacity:0}],{duration:180,easing:'ease-out'}).finished.then(()=>loader.remove());
+  else loader.animate([{opacity:1},{opacity:0}],{duration:140,easing:'ease-out'}).finished.then(()=>loader.remove()).catch(()=>loader.remove());
  }
- if (!('IntersectionObserver' in window) || reduce.matches) return;
- const selector='.package-results article,.section-heading,.care-intro,.care-benefits>div,.umrah-options>a,.journey-type,.team-person,.service-grid>a,.story-grid,.contact-copy';
- const seen = new WeakSet();
- const observer = new IntersectionObserver(entries=>entries.forEach(entry=>{
-  if(!entry.isIntersecting)return;
-  observer.unobserve(entry.target);
-  // Fast scrolling and newly mounted results stay readable without fading out.
-  if(entry.boundingClientRect.top>=innerHeight) animate(entry.target);
- }),{rootMargin:'0px 0px 120px 0px',threshold:0});
- const register = el => {
-  if(seen.has(el))return;
-  seen.add(el);
-  const rect=el.getBoundingClientRect();
-  if(rect.width && rect.top>=innerHeight)observer.observe(el);
+ const desired = details => active.get(details)?.open ?? details.open;
+ const setDetails = (details, open) => {
+  const previous = active.get(details);
+  if ((previous?.open ?? details.open) === open) return;
+  const summary = details.querySelector('summary');
+  const content = summary?.nextElementSibling;
+  const height = details.getBoundingClientRect().height;
+  const previousOpacity = content ? getComputedStyle(content).opacity : '1';
+  const previousTransform = content ? getComputedStyle(content).transform : 'none';
+  previous?.animation.cancel();
+  active.delete(details);
+  details.style.height = '';
+  details.style.overflow = '';
+  details.open = true;
+  details.dataset.expanded = String(open);
+  if (content) content.inert = !open;
+  const finish = () => {
+   details.open = open;
+   details.style.height = '';
+   details.style.overflow = '';
+   if (content) content.inert = !open;
+   active.delete(details);
+   details.dispatchEvent(new Event('disclosureend'));
+  };
+  if (reduce.matches || !details.animate || !content) { finish(); return; }
+  const floating = getComputedStyle(content).position === 'absolute';
+  const end = open ? details.getBoundingClientRect().height : summary.getBoundingClientRect().height + parseFloat(getComputedStyle(details).borderTopWidth || 0) + parseFloat(getComputedStyle(details).borderBottomWidth || 0);
+  const target = floating ? content : details;
+  if (!floating) details.style.overflow = 'hidden';
+  const frames = floating
+   ? [{opacity:previous?previousOpacity:(open?0:1),transform:previous?previousTransform:(open?'translateY(-5px)':'translateY(0)')},{opacity:open?1:0,transform:open?'translateY(0)':'translateY(-3px)'}]
+   : [{height:height+'px'},{height:end+'px'}];
+  const animation = target.animate(frames,{duration:open?240:180,easing:ease});
+  active.set(details,{animation,open,finish});
+  animation.finished.then(()=>{if(active.get(details)?.animation===animation)finish()}).catch(()=>{});
  };
- const scan = root => {if(root.nodeType!==1)return;if(root.matches(selector))register(root);root.querySelectorAll(selector).forEach(register)};
- scan(document.querySelector('main')||document.body);
- const mutations=new MutationObserver(records=>records.forEach(record=>record.addedNodes.forEach(scan)));
- mutations.observe(document.querySelector('main')||document.body,{childList:true,subtree:true});
- reduce.addEventListener('change',()=>{if(reduce.matches){running.forEach(animation=>animation.cancel());observer.disconnect();mutations.disconnect()}});
+ window.senyumDetails = {set:setDetails,isOpen:desired};
+ document.querySelectorAll('details').forEach(details => {
+  const summary = details.querySelector('summary');
+  summary?.addEventListener('click', event => {
+   event.preventDefault();
+   const open = !desired(details);
+   if (open && details.classList.contains('nav-dropdown')) document.querySelectorAll('.nav-dropdown').forEach(other=>{if(other!==details)setDetails(other,false)});
+   setDetails(details,open);
+  });
+ });
+ reduce.addEventListener('change',()=>{
+  if (!reduce.matches) return;
+  [...active.values()].forEach(({animation,finish})=>{animation.cancel();finish()});
+ });
 })();

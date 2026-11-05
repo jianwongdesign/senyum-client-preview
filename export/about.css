@@ -66,3 +66,12 @@ p{max-width:none;text-wrap:wrap;white-space:normal}
  .photo-credit summary{cursor:pointer;min-height:32px;display:list-item;padding-block:6px}.photo-credit p{padding-top:8px}
  .tour-contact.contact-section{padding-bottom:94px}
 }
+
+/* Navigation remains mounted, so opening and closing feel continuous. */
+.nav-dropdown summary svg{transition:transform 220ms cubic-bezier(.16,1,.3,1)}
+.nav-dropdown[data-expanded='false'] summary svg{transform:none}
+@media(max-width:900px){
+ .site-nav{display:grid;gap:4px;visibility:hidden;opacity:0;transform:translateY(-6px);pointer-events:none;overscroll-behavior:contain;transition:opacity 160ms ease-out,transform 200ms cubic-bezier(.16,1,.3,1),visibility 0s 200ms}
+ .site-nav.is-open{visibility:visible;opacity:1;transform:none;pointer-events:auto;transition-delay:0s}
+}
+@media(prefers-reduced-motion:reduce){.site-nav{transform:none;transition:none}.nav-dropdown summary svg{transition:none}}

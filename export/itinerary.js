@@ -2,9 +2,10 @@
  const days=[...document.querySelectorAll('.itinerary-day')];
  const expand=document.querySelector('.expand-days');
  const noun=expand?.dataset.noun||'days';
- const sync=()=>{if(!expand)return;const all=days.every(day=>day.open);expand.setAttribute('aria-expanded',String(all));expand.textContent=(all?'Collapse all ':'Expand all ')+noun};
- expand?.addEventListener('click',()=>{const open=!days.every(day=>day.open);days.forEach(day=>day.open=open);sync()});
- days.forEach(day=>day.addEventListener('toggle',sync));
+ const isOpen=day=>window.senyumDetails?.isOpen(day) ?? day.open;
+ const sync=()=>{if(!expand)return;const all=days.every(isOpen);expand.setAttribute('aria-expanded',String(all));expand.textContent=(all?'Collapse all ':'Expand all ')+noun};
+ expand?.addEventListener('click',()=>{const open=!days.every(isOpen);days.forEach(day=>window.senyumDetails ? window.senyumDetails.set(day,open) : day.open=open);sync()});
+ days.forEach(day=>{day.addEventListener('toggle',sync);day.addEventListener('disclosureend',()=>{sync();schedule()})});
  const links=[...document.querySelectorAll('.tour-sections a')];
  const sections=links.map(link=>document.querySelector(link.hash));
  let frame=0;

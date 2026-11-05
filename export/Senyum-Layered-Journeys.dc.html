@@ -468,6 +468,24 @@ p{max-width:none !important;text-wrap:wrap;white-space:normal}
 @media(max-width:767px){.tour-switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;gap:4px;padding:5px}.tour-switch button{padding:11px 12px;font-size:14px}}
 header .direct-tour-link{padding:10px 12px;font-size:14px;font-weight:700;color:#103f35;white-space:nowrap}
 header nav[aria-label='Mobile'] .direct-tour-link{display:block;padding:17px 14px;border-radius:8px;background:#f8fbf8;font-size:16px}
+
+/* Short, reversible transitions keep navigation anchored to its trigger. */
+.home-dropdown-panel,.home-mobile-panel{visibility:hidden;opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity 160ms ease-out,transform 220ms cubic-bezier(.16,1,.3,1),visibility 0s 220ms}
+.home-dropdown-panel[data-open='true'],.home-mobile-panel[data-open='true']{visibility:visible;opacity:1;transform:none;pointer-events:auto;transition-delay:0s}
+.home-dropdown-panel{position:absolute;top:100%;left:0;min-width:238px}
+.home-dropdown-panel>#umrah-navigation{position:relative!important;top:auto!important}
+.home-mobile-panel{position:absolute;inset:100% 0 auto;background:#f8fbf8}
+.home-mobile-panel>div{max-height:calc(100dvh - 86px)!important;overscroll-behavior:contain}
+.home-umrah-panel{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows 220ms cubic-bezier(.16,1,.3,1),visibility 0s 220ms}
+.home-umrah-panel>div{min-height:0;overflow:hidden}
+.home-umrah-panel[data-open='true']{grid-template-rows:1fr;visibility:visible;transition-delay:0s}
+header button[aria-controls] svg{transition:transform 220ms cubic-bezier(.16,1,.3,1)}
+header button[aria-expanded='true'][aria-controls*='umrah'] svg{transform:rotate(180deg)}
+header button[aria-controls='mobile-navigation']{background:#e5f4eb!important;color:#103f35!important}
+.destination-picker__popup:not([hidden]){animation:none}
+@media(min-width:1180px){.home-mobile-panel{display:none}}
+@media(prefers-reduced-motion:reduce){.home-dropdown-panel,.home-mobile-panel{transform:none;transition:none}.home-umrah-panel{transition:none}}
+@media(max-width:1179px){.home-mobile-panel nav{padding-bottom:82px!important}}
 </style></helmet>
 <div style="min-height:100vh;background:#f8fbf8">
 
@@ -498,14 +516,14 @@ header nav[aria-label='Mobile'] .direct-tour-link{display:block;padding:17px 14p
             Umrah
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
           </button>
-          <sc-if value="{{ umrahOpen }}" hint-placeholder-val="{{ false }}">
+          <div class="home-dropdown-panel" data-open="{{ umrahOpen }}">
           <div id="umrah-navigation" style="position:absolute;top:100%;left:0;margin-top:0;min-width:238px;background:#FFFFFF;border-radius:8px;padding:8px;box-shadow:0 22px 46px rgba(22,33,31,0.2);display:grid;gap:1px">
             <a href="Senyum-UmrahGroup.html" style="padding:12px;font-size:14.5px;font-weight:600;color:#183D35;border-radius:6px" style-hover="background:#e5f4eb;color:#103f35">Group Umrah</a>
             <a href="Senyum-UmrahLadiesOnly.html" style="padding:12px;font-size:14.5px;font-weight:600;color:#183D35;border-radius:6px" style-hover="background:#e5f4eb;color:#103f35">Ladies-Only Umrah</a>
             <a href="Senyum-PrivateUmrah.html" style="padding:12px;font-size:14.5px;font-weight:600;color:#183D35;border-radius:6px" style-hover="background:#e5f4eb;color:#103f35">Private Umrah</a>
             <a href="Senyum-UmrahDiy.html" style="padding:12px;font-size:14.5px;font-weight:600;color:#183D35;border-radius:6px" style-hover="background:#e5f4eb;color:#103f35">DIY Umrah</a>
           </div>
-          </sc-if>
+          </div>
         </div>
         <a href="#enquire" style="font-size:15px;font-weight:600;color:#183D35;padding:10px 12px" style-hover="color:#103f35">Corporate</a>
 
@@ -523,7 +541,7 @@ header nav[aria-label='Mobile'] .direct-tour-link{display:block;padding:17px 14p
         <button type="button" onClick="{{ toggleSearch }}" aria-label="Open search" style="background:rgba(6,81,74,0.08);border:0;border-radius:8px;width:48px;height:48px;display:grid;place-items:center;cursor:pointer;color:#103f35">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
         </button>
-        <button type="button" onClick="{{ toggleMenu }}" aria-label="Open menu" aria-expanded="{{ menuOpen }}" aria-controls="mobile-navigation" style="background:#103f35;border:0;border-radius:8px;width:48px;height:48px;display:grid;place-items:center;cursor:pointer;color:#FFFFFF">
+        <button type="button" onClick="{{ toggleMenu }}" aria-label="{{ menuLabel }}" aria-expanded="{{ menuOpen }}" aria-controls="mobile-navigation" style="background:#103f35;border:0;border-radius:8px;width:48px;height:48px;display:grid;place-items:center;cursor:pointer;color:#FFFFFF">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
         </button>
       </div>
@@ -539,23 +557,23 @@ header nav[aria-label='Mobile'] .direct-tour-link{display:block;padding:17px 14p
     </div>
     </sc-if>
 
-    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div class="home-mobile-panel" data-open="{{ menuOpen }}">
     <div style="background:#f8fbf8;max-height:72vh;overflow:auto;box-shadow:inset 0 1px 0 rgba(22,33,31,0.1)">
       <nav id="mobile-navigation" onClick="{{ closeMobileLink }}" aria-label="Mobile" style="padding:12px clamp(18px,4vw,52px) 26px;display:grid;gap:4px">
         <a href="#top" style="padding:17px 14px;border-radius:8px;background:#103f35;font-size:16px;font-weight:700;color:#FFFFFF">Home</a>
         <a class="direct-tour-link" href="#finder" onClick="{{ pickGroup }}">Group tours</a><a class="direct-tour-link" href="#finder" onClick="{{ pickPrivate }}">Private tours</a>
-        <button type="button" onClick="{{ toggleGroupUmrah }}" style="background:#FFFFFF;border:0;border-radius:8px;padding:17px 14px;display:flex;align-items:center;justify-content:space-between;font-size:16px;font-weight:700;color:#183D35;cursor:pointer;text-align:left">
+        <button type="button" onClick="{{ toggleGroupUmrah }}" aria-expanded="{{ mUmrah }}" aria-controls="mobile-umrah-navigation" style="background:#FFFFFF;border:0;border-radius:8px;padding:17px 14px;display:flex;align-items:center;justify-content:space-between;font-size:16px;font-weight:700;color:#183D35;cursor:pointer;text-align:left">
           Umrah
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
         </button>
-        <sc-if value="{{ mUmrah }}" hint-placeholder-val="{{ false }}">
+        <div class="home-umrah-panel" id="mobile-umrah-navigation" data-open="{{ mUmrah }}"><div>
         <div style="display:grid;gap:3px;padding:2px 0 6px 12px">
           <a href="Senyum-UmrahGroup.html" style="padding:15px 14px;border-radius:8px;background:#e5f4eb;font-size:15px;font-weight:600;color:#183D35">Group Umrah</a>
           <a href="Senyum-UmrahLadiesOnly.html" style="padding:15px 14px;border-radius:8px;background:#e5f4eb;font-size:15px;font-weight:600;color:#183D35">Ladies-Only Umrah</a>
           <a href="Senyum-PrivateUmrah.html" style="padding:15px 14px;border-radius:8px;background:#e5f4eb;font-size:15px;font-weight:600;color:#183D35">Private Umrah</a>
           <a href="Senyum-UmrahDiy.html" style="padding:15px 14px;border-radius:8px;background:#e5f4eb;font-size:15px;font-weight:600;color:#183D35">DIY Umrah</a>
         </div>
-        </sc-if>
+        </div></div>
         <a href="#enquire" style="padding:17px 14px;border-radius:8px;background:#FFFFFF;font-size:16px;font-weight:700;color:#183D35">Corporate &amp; MICE</a>
 
         <a href="#dest" style="padding:17px 14px;border-radius:8px;background:#FFFFFF;font-size:16px;font-weight:700;color:#183D35">Singapore Tours</a>
@@ -563,8 +581,7 @@ header nav[aria-label='Mobile'] .direct-tour-link{display:block;padding:17px 14p
         <a href="#enquire" style="padding:17px 14px;border-radius:8px;background:#FFFFFF;font-size:16px;font-weight:700;color:#183D35">Contact</a>
         <a href="#enquire" style="margin-top:10px;background:#d9ed92;color:#183D35;font-size:16px;font-weight:800;padding:18px;border-radius:8px;text-align:center">Enquire Now</a>
       </nav>
-    </div>
-    </sc-if>
+    </div></div>
   </header>
 
   <section class="journey-layer destination-hero" id="top">
@@ -1048,8 +1065,15 @@ class Component extends DCLogic {
       trigger.querySelector('span').textContent = option ? option.textContent : 'Any destination';
       trigger.setAttribute('aria-label', 'Destination: ' + (option ? option.textContent : 'Any destination'));
     };
+    let popupAnimation;
     const close = (restoreFocus = false) => {
-      popup.hidden = true;
+      popupAnimation?.cancel();
+      popup.inert = true;
+      if (!popup.hidden && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const animation = popup.animate([{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-3px)'}],{duration:130,easing:'ease-out'});
+        popupAnimation = animation;
+        animation.finished.then(()=>{if(popupAnimation===animation)popup.hidden=true}).catch(()=>{});
+      } else popup.hidden = true;
       trigger.setAttribute('aria-expanded', 'false');
       if (activePicker === picker) activePicker = null;
       if (restoreFocus) trigger.focus({ preventScroll: true });
@@ -1106,13 +1130,16 @@ class Component extends DCLogic {
       if (activePicker && activePicker !== picker) activePicker.close();
       activePicker = picker; sync(); search.value = ''; render();
       position();
+      popupAnimation?.cancel();
       popup.hidden = false;
+      popup.inert = false;
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) popupAnimation = popup.animate([{opacity:0,transform:'translateY(-5px)'},{opacity:1,transform:'translateY(0)'}],{duration:200,easing:'cubic-bezier(.16,1,.3,1)'});
       trigger.setAttribute('aria-expanded', 'true');
       search.focus({ preventScroll: true });
     };
     const picker = { trigger, popup, sync, close, position };
     pickers.push(picker); sync();
-    trigger.addEventListener('click', event => { event.preventDefault(); popup.hidden ? open() : close(); });
+    trigger.addEventListener('click', event => { event.preventDefault(); trigger.getAttribute('aria-expanded') === 'true' ? close() : open(); });
     trigger.addEventListener('keydown', event => {
       if (['ArrowDown', 'ArrowUp'].includes(event.key)) { event.preventDefault(); open(); focusOption(event.key === 'ArrowDown' ? 0 : options.length - 1); }
     });
@@ -1134,14 +1161,18 @@ class Component extends DCLogic {
   document.addEventListener('click', () => requestAnimationFrame(() => pickers.forEach(p => p.sync())));
   document.addEventListener('submit', () => requestAnimationFrame(() => pickers.forEach(p => p.sync())));
   document.addEventListener('wheel', event => { if (activePicker && !activePicker.popup.contains(event.target)) activePicker.close(); }, { passive: true });
-  window.addEventListener('resize', () => { if (activePicker) activePicker.position(); });
+  let positionFrame = 0;
+  const reposition = () => { if(!positionFrame)positionFrame=requestAnimationFrame(()=>{positionFrame=0;activePicker?.position()}) };
+  window.addEventListener('resize', reposition);
+  window.addEventListener('scroll', reposition, {passive:true});
+  window.visualViewport?.addEventListener('resize', reposition);
 })();
 
 /* Predictable dismissal for the Home navigation, including keyboard users. */
 (() => {
   const close = () => this.setState({menu:false,dropdown:null,mUmrah:false});
   document.addEventListener('click', event => {
-    if (!event.target.closest('header') && (this.state.menu || this.state.dropdown)) close();
+    if ((!event.target.closest('header') || event.target.closest('header a')) && (this.state.menu || this.state.dropdown)) close();
   });
   document.addEventListener('keydown', event => {
     if (event.key !== 'Escape' || !(this.state.menu || this.state.dropdown)) return;
@@ -1151,43 +1182,78 @@ class Component extends DCLogic {
   });
 })();
 
-/* Small, one-time reveals start before content enters the viewport. */
+/* Persistent Home menus: hidden panels leave the keyboard order immediately. */
+(() => {
+ const header = document.querySelector('header');
+ const sync = () => header.querySelectorAll('.home-dropdown-panel,.home-mobile-panel,.home-umrah-panel').forEach(panel=>{panel.inert=panel.dataset.open!=='true'});
+ const observer = new MutationObserver(sync);
+ observer.observe(header,{subtree:true,childList:true,attributes:true,attributeFilter:['data-open']});
+ sync();
+ matchMedia('(min-width:1180px)').addEventListener('change',()=>this.setState({menu:false,dropdown:null,mUmrah:false}));
+})();
+
+/* Shared, interruptible disclosure motion. Content stays visible without JS. */
 (() => {
  if (window.senyumMotionReady) return;
  window.senyumMotionReady = true;
  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
- const running = new Set();
- const animate = element => {
-  if (reduce.matches || !element.animate) return;
-  const animation = element.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:380,easing:'cubic-bezier(.22,1,.36,1)'});
-  running.add(animation);
-  animation.finished.catch(()=>{}).finally(()=>running.delete(animation));
- };
+ const ease = 'cubic-bezier(.16,1,.3,1)';
+ const active = new Map();
  const loader = document.querySelector('#senyum-loading');
  if (loader) {
   if (reduce.matches || !loader.animate) loader.remove();
-  else loader.animate([{opacity:1},{opacity:0}],{duration:180,easing:'ease-out'}).finished.then(()=>loader.remove());
+  else loader.animate([{opacity:1},{opacity:0}],{duration:140,easing:'ease-out'}).finished.then(()=>loader.remove()).catch(()=>loader.remove());
  }
- if (!('IntersectionObserver' in window) || reduce.matches) return;
- const selector='.package-results article,.section-heading,.care-intro,.care-benefits>div,.umrah-options>a,.journey-type,.team-person,.service-grid>a,.story-grid,.contact-copy';
- const seen = new WeakSet();
- const observer = new IntersectionObserver(entries=>entries.forEach(entry=>{
-  if(!entry.isIntersecting)return;
-  observer.unobserve(entry.target);
-  // Fast scrolling and newly mounted results stay readable without fading out.
-  if(entry.boundingClientRect.top>=innerHeight) animate(entry.target);
- }),{rootMargin:'0px 0px 120px 0px',threshold:0});
- const register = el => {
-  if(seen.has(el))return;
-  seen.add(el);
-  const rect=el.getBoundingClientRect();
-  if(rect.width && rect.top>=innerHeight)observer.observe(el);
+ const desired = details => active.get(details)?.open ?? details.open;
+ const setDetails = (details, open) => {
+  const previous = active.get(details);
+  if ((previous?.open ?? details.open) === open) return;
+  const summary = details.querySelector('summary');
+  const content = summary?.nextElementSibling;
+  const height = details.getBoundingClientRect().height;
+  const previousOpacity = content ? getComputedStyle(content).opacity : '1';
+  const previousTransform = content ? getComputedStyle(content).transform : 'none';
+  previous?.animation.cancel();
+  active.delete(details);
+  details.style.height = '';
+  details.style.overflow = '';
+  details.open = true;
+  details.dataset.expanded = String(open);
+  if (content) content.inert = !open;
+  const finish = () => {
+   details.open = open;
+   details.style.height = '';
+   details.style.overflow = '';
+   if (content) content.inert = !open;
+   active.delete(details);
+   details.dispatchEvent(new Event('disclosureend'));
+  };
+  if (reduce.matches || !details.animate || !content) { finish(); return; }
+  const floating = getComputedStyle(content).position === 'absolute';
+  const end = open ? details.getBoundingClientRect().height : summary.getBoundingClientRect().height + parseFloat(getComputedStyle(details).borderTopWidth || 0) + parseFloat(getComputedStyle(details).borderBottomWidth || 0);
+  const target = floating ? content : details;
+  if (!floating) details.style.overflow = 'hidden';
+  const frames = floating
+   ? [{opacity:previous?previousOpacity:(open?0:1),transform:previous?previousTransform:(open?'translateY(-5px)':'translateY(0)')},{opacity:open?1:0,transform:open?'translateY(0)':'translateY(-3px)'}]
+   : [{height:height+'px'},{height:end+'px'}];
+  const animation = target.animate(frames,{duration:open?240:180,easing:ease});
+  active.set(details,{animation,open,finish});
+  animation.finished.then(()=>{if(active.get(details)?.animation===animation)finish()}).catch(()=>{});
  };
- const scan = root => {if(root.nodeType!==1)return;if(root.matches(selector))register(root);root.querySelectorAll(selector).forEach(register)};
- scan(document.querySelector('main')||document.body);
- const mutations=new MutationObserver(records=>records.forEach(record=>record.addedNodes.forEach(scan)));
- mutations.observe(document.querySelector('main')||document.body,{childList:true,subtree:true});
- reduce.addEventListener('change',()=>{if(reduce.matches){running.forEach(animation=>animation.cancel());observer.disconnect();mutations.disconnect()}});
+ window.senyumDetails = {set:setDetails,isOpen:desired};
+ document.querySelectorAll('details').forEach(details => {
+  const summary = details.querySelector('summary');
+  summary?.addEventListener('click', event => {
+   event.preventDefault();
+   const open = !desired(details);
+   if (open && details.classList.contains('nav-dropdown')) document.querySelectorAll('.nav-dropdown').forEach(other=>{if(other!==details)setDetails(other,false)});
+   setDetails(details,open);
+  });
+ });
+ reduce.addEventListener('change',()=>{
+  if (!reduce.matches) return;
+  [...active.values()].forEach(({animation,finish})=>{animation.cancel();finish()});
+ });
 })();
 
 const tourRoute = new URLSearchParams(location.search).get('tour'); if (tourRoute === 'private' || tourRoute === 'group') { this.setState({mode: tourRoute, visibleCount: 6, dest: 'Any destination', applied: false}); requestAnimationFrame(() => window.senyumNavigate(document.getElementById(location.hash.slice(1)) || document.querySelector('#finder'), 'instant')); }
@@ -1224,7 +1290,7 @@ if (!tourRoute && location.hash) { const target = document.getElementById(locati
       testimonials: false,
       wide: !st.narrow,
       narrow: st.narrow,
-      menuOpen: st.menu, mTours: st.mTours, mUmrah: st.mUmrah,
+      menuLabel: st.menu ? 'Close menu' : 'Open menu', menuOpen: st.menu, mTours: st.mTours, mUmrah: st.mUmrah,
       searchOpen: st.search,
       toursOpen: st.dropdown === 'tours',
       umrahOpen: st.dropdown === 'umrah',

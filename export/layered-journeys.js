@@ -124,8 +124,15 @@
       trigger.querySelector('span').textContent = option ? option.textContent : 'Any destination';
       trigger.setAttribute('aria-label', 'Destination: ' + (option ? option.textContent : 'Any destination'));
     };
+    let popupAnimation;
     const close = (restoreFocus = false) => {
-      popup.hidden = true;
+      popupAnimation?.cancel();
+      popup.inert = true;
+      if (!popup.hidden && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const animation = popup.animate([{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-3px)'}],{duration:130,easing:'ease-out'});
+        popupAnimation = animation;
+        animation.finished.then(()=>{if(popupAnimation===animation)popup.hidden=true}).catch(()=>{});
+      } else popup.hidden = true;
       trigger.setAttribute('aria-expanded', 'false');
       if (activePicker === picker) activePicker = null;
       if (restoreFocus) trigger.focus({ preventScroll: true });
@@ -182,13 +189,16 @@
       if (activePicker && activePicker !== picker) activePicker.close();
       activePicker = picker; sync(); search.value = ''; render();
       position();
+      popupAnimation?.cancel();
       popup.hidden = false;
+      popup.inert = false;
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) popupAnimation = popup.animate([{opacity:0,transform:'translateY(-5px)'},{opacity:1,transform:'translateY(0)'}],{duration:200,easing:'cubic-bezier(.16,1,.3,1)'});
       trigger.setAttribute('aria-expanded', 'true');
       search.focus({ preventScroll: true });
     };
     const picker = { trigger, popup, sync, close, position };
     pickers.push(picker); sync();
-    trigger.addEventListener('click', event => { event.preventDefault(); popup.hidden ? open() : close(); });
+    trigger.addEventListener('click', event => { event.preventDefault(); trigger.getAttribute('aria-expanded') === 'true' ? close() : open(); });
     trigger.addEventListener('keydown', event => {
       if (['ArrowDown', 'ArrowUp'].includes(event.key)) { event.preventDefault(); open(); focusOption(event.key === 'ArrowDown' ? 0 : options.length - 1); }
     });
@@ -210,14 +220,18 @@
   document.addEventListener('click', () => requestAnimationFrame(() => pickers.forEach(p => p.sync())));
   document.addEventListener('submit', () => requestAnimationFrame(() => pickers.forEach(p => p.sync())));
   document.addEventListener('wheel', event => { if (activePicker && !activePicker.popup.contains(event.target)) activePicker.close(); }, { passive: true });
-  window.addEventListener('resize', () => { if (activePicker) activePicker.position(); });
+  let positionFrame = 0;
+  const reposition = () => { if(!positionFrame)positionFrame=requestAnimationFrame(()=>{positionFrame=0;activePicker?.position()}) };
+  window.addEventListener('resize', reposition);
+  window.addEventListener('scroll', reposition, {passive:true});
+  window.visualViewport?.addEventListener('resize', reposition);
 })();
 
 /* Predictable dismissal for the Home navigation, including keyboard users. */
 (() => {
   const close = () => this.setState({menu:false,dropdown:null,mUmrah:false});
   document.addEventListener('click', event => {
-    if (!event.target.closest('header') && (this.state.menu || this.state.dropdown)) close();
+    if ((!event.target.closest('header') || event.target.closest('header a')) && (this.state.menu || this.state.dropdown)) close();
   });
   document.addEventListener('keydown', event => {
     if (event.key !== 'Escape' || !(this.state.menu || this.state.dropdown)) return;
@@ -225,4 +239,14 @@
     close();
     trigger?.focus();
   });
+})();
+
+/* Persistent Home menus: hidden panels leave the keyboard order immediately. */
+(() => {
+ const header = document.querySelector('header');
+ const sync = () => header.querySelectorAll('.home-dropdown-panel,.home-mobile-panel,.home-umrah-panel').forEach(panel=>{panel.inert=panel.dataset.open!=='true'});
+ const observer = new MutationObserver(sync);
+ observer.observe(header,{subtree:true,childList:true,attributes:true,attributeFilter:['data-open']});
+ sync();
+ matchMedia('(min-width:1180px)').addEventListener('change',()=>this.setState({menu:false,dropdown:null,mUmrah:false}));
 })();
