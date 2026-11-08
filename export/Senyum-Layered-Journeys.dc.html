@@ -487,25 +487,30 @@ header button[aria-controls='mobile-navigation']{background:#e5f4eb!important;co
 @media(prefers-reduced-motion:reduce){.home-dropdown-panel,.home-mobile-panel{transform:none;transition:none}.home-umrah-panel{transition:none}}
 @media(max-width:1179px){.home-mobile-panel nav{padding-bottom:82px!important}}
 
-/* A compact set of journey links, with no image or oversized panels. */
-#umrah.umrah-simple>h2{font-size:clamp(30px,3vw,42px);line-height:1.15;letter-spacing:-.025em;color:#103f35;margin:0 0 22px}
-#umrah.umrah-simple .umrah-options{grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
-#umrah.umrah-simple .umrah-options>a{display:grid;grid-template-columns:minmax(0,1fr) 18px;column-gap:12px;row-gap:8px;padding:18px 0 22px;min-width:0;border-bottom:1px solid #a7cbbb;border-radius:0;background:transparent;transform:none;align-content:start}
-#umrah.umrah-simple .umrah-options h3{grid-column:1;grid-row:1;font-size:20px!important;line-height:1.3!important;font-weight:800}
-#umrah.umrah-simple .umrah-options p{grid-column:1;grid-row:2;font-size:14px!important;line-height:1.5!important;font-weight:400!important;margin:0}
-#umrah.umrah-simple .umrah-option-link{grid-column:2;grid-row:1/3;align-self:center;display:flex;min-height:0;margin:0;color:#08735b}
-#umrah.umrah-simple .umrah-option-link svg{width:18px;height:18px}
-#umrah.umrah-simple .umrah-options>a:hover{border-color:#08735b}
-#umrah.umrah-simple .umrah-options>a:hover h3{color:#08735b}
-#umrah.umrah-simple .umrah-options>a:focus-visible{outline:3px solid #08735b;outline-offset:6px}
-@media(max-width:1100px){#umrah.umrah-simple .umrah-options{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px}}
+/* Four distinct travel choices on one calm forest-green surface. */
+#umrah.umrah-collection{background:#103f35;border:0;border-radius:20px;padding:clamp(28px,4vw,52px);margin-top:56px}
+#umrah.umrah-collection>h2{font-size:clamp(30px,3vw,42px);line-height:1.15;letter-spacing:-.025em;color:#f8fbf8;margin:0 0 32px}
+#umrah.umrah-collection>h2 em{color:#d9ed92;font-style:normal}
+#umrah.umrah-collection .umrah-options{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+#umrah.umrah-collection .umrah-options>a{display:grid;grid-template-columns:1fr 24px;grid-template-rows:48px auto 1fr;column-gap:10px;row-gap:0;min-width:0;padding:24px 22px;border:0;border-radius:12px;background:#f8fbf8;color:#103f35;transform:none}
+#umrah.umrah-collection .umrah-choice-icon{grid-column:1;grid-row:1;width:40px;height:40px;fill:none;stroke:#08735b;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transform:none}
+#umrah.umrah-collection .umrah-option-link{grid-column:2;grid-row:1;display:flex;align-self:start;min-height:0;margin:4px 0 0;color:#08735b}
+#umrah.umrah-collection .umrah-option-link svg{width:20px;height:20px}
+#umrah.umrah-collection .umrah-options h3{grid-column:1/-1;grid-row:2;font-size:21px!important;line-height:1.25!important;font-weight:800;text-wrap:wrap;margin:22px 0 10px}
+#umrah.umrah-collection .umrah-options p{grid-column:1/-1;grid-row:3;color:#406357;font-size:14px!important;line-height:1.5!important;font-weight:400!important;margin:0}
+#umrah.umrah-collection .umrah-options>a:hover{background:#e5f3b9}
+#umrah.umrah-collection .umrah-options>a:focus-visible{outline:3px solid #d9ed92;outline-offset:5px}
+@media(max-width:1100px){#umrah.umrah-collection .umrah-options{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){
- #umrah.umrah-simple>h2{font-size:30px;margin-bottom:14px}
- #umrah.umrah-simple .umrah-options{gap:6px 18px}
- #umrah.umrah-simple .umrah-options>a{padding:16px 0 18px;column-gap:8px}
- #umrah.umrah-simple .umrah-options h3{font-size:16px!important}
- #umrah.umrah-simple .umrah-options p{font-size:12px!important}
- #umrah.umrah-simple .umrah-option-link svg{width:16px;height:16px}
+ #umrah.umrah-collection{padding:24px 16px;border-radius:16px;margin-top:36px}
+ #umrah.umrah-collection>h2{font-size:30px;margin-bottom:24px}
+ #umrah.umrah-collection .umrah-options{gap:12px}
+ #umrah.umrah-collection .umrah-options>a{padding:18px 14px;grid-template-columns:1fr 18px;grid-template-rows:32px auto 1fr;column-gap:6px}
+ #umrah.umrah-collection .umrah-choice-icon{width:30px;height:30px}
+ #umrah.umrah-collection .umrah-option-link{margin-top:4px}
+ #umrah.umrah-collection .umrah-option-link svg{width:16px;height:16px}
+ #umrah.umrah-collection .umrah-options h3{font-size:16px!important;margin:18px 0 8px}
+ #umrah.umrah-collection .umrah-options p{font-size:12px!important}
 }
 </style></helmet>
 <div style="min-height:100vh;background:#f8fbf8">
@@ -682,9 +687,9 @@ header button[aria-controls='mobile-navigation']{background:#e5f4eb!important;co
       <div class="care-intro"><h2>Your faith. Your comfort.<br />Part of the plan.</h2><p><span class="desktop-only">Muslim-friendly travel, thoughtfully arranged. From the meals you share to the moments you pause for prayer, we plan around what matters to you.</span><span class="mobile-only">Halal meals, prayer-friendly plans and personal support.</span></p><a class="text-link" href="Senyum-About.html">Get to know Senyum <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg></a></div>
       <div class="care-benefits"><sc-for list="{{ benefits }}" as="b" hint-placeholder-count="6"><div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6" /></svg><div><h3>{{ b.title }}</h3><p>{{ b.text }}</p></div></div></sc-for></div>
     </div>
-    <div id="umrah" class="umrah-within-care umrah-simple" aria-labelledby="umrah-heading">
-      <h2 id="umrah-heading">Your Umrah, with care.</h2>
-      <div class="umrah-options"><sc-for list="{{ umrah }}" as="u" hint-placeholder-count="4"><a href="{{ u.url }}"><h3>{{ u.title }}</h3><p>{{ u.meta }}</p><span class="umrah-option-link" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg></span></a></sc-for></div>
+    <div id="umrah" class="umrah-within-care umrah-collection" aria-labelledby="umrah-heading">
+      <h2 id="umrah-heading">Your Umrah, <em>with care.</em></h2>
+      <div class="umrah-options"><sc-for list="{{ umrah }}" as="u" hint-placeholder-count="4"><a href="{{ u.url }}"><svg class="umrah-choice-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="{{ u.icon }}" /></svg><span class="umrah-option-link" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5" /></svg></span><h3>{{ u.title }}</h3><p>{{ u.meta }}</p></a></sc-for></div>
     </div>
   </div>
 </section>
@@ -933,7 +938,7 @@ class Component extends DCLogic {
     { no: '06', title: 'English and Malay assistance', text: 'Consultation and trip support in both languages.' }
   ];
 
-  umrah = [{"title": "Group Umrah", "text": "An accompanied journey with five-star hotel options near the holy mosques, full-board meals and support in English and Malay.", "meta": "Guided group journey", "tag": "View group departures", "url": "Senyum-UmrahGroup.html", "image": "Al-Masjid an-Nabawi.jpg", "alt": "Al-Masjid an-Nabawi in Madinah"}, {"title": "Ladies-Only Umrah", "text": "Travel with fellow Muslimah and female tour leaders, with religious guidance, halal meals, accommodation and transport arranged.", "meta": "For Muslimah travellers", "tag": "Explore ladies-only Umrah", "url": "Senyum-UmrahLadiesOnly.html", "image": "Great Mosque of Mecca.jpg", "alt": "The Great Mosque of Mecca"}, {"title": "Private Umrah", "text": "A complete journey for your family or friends, tailored around your dates, hotels and preferred itinerary, with ground support throughout.", "meta": "Tailored to your own party", "tag": "Plan your private Umrah", "url": "Senyum-PrivateUmrah.html", "image": "Medina Saudi Arabia.jpg", "alt": "The city of Madinah, Saudi Arabia"}, {"title": "DIY Umrah", "text": "Travel independently and choose the help you need, from visa and hotel bookings to guides, transport and airport transfers.", "meta": "Choose your services", "tag": "Explore DIY Umrah", "url": "Senyum-UmrahDiy.html", "image": "Kaaba Mecca.jpg", "alt": "The Kaaba at Masjid al-Haram, Mecca"}];
+  umrah = [{"title": "Group Umrah", "text": "An accompanied journey with five-star hotel options near the holy mosques, full-board meals and support in English and Malay.", "meta": "Guided group journey", "tag": "View group departures", "url": "Senyum-UmrahGroup.html", "image": "Al-Masjid an-Nabawi.jpg", "alt": "Al-Masjid an-Nabawi in Madinah", "icon": "M8 28V5m0 1c5-6 11 6 18 0v13c-7 6-13-6-18 0M4 28h8"}, {"title": "Ladies-Only Umrah", "text": "Travel with fellow Muslimah and female tour leaders, with religious guidance, halal meals, accommodation and transport arranged.", "meta": "For Muslimah travellers", "tag": "Explore ladies-only Umrah", "url": "Senyum-UmrahLadiesOnly.html", "image": "Great Mosque of Mecca.jpg", "alt": "The Great Mosque of Mecca", "icon": "M16 27S4 20 4 11a7 7 0 0 1 12-4 7 7 0 0 1 12 4c0 9-12 16-12 16Zm-5-12 3 3 7-7"}, {"title": "Private Umrah", "text": "A complete journey for your family or friends, tailored around your dates, hotels and preferred itinerary, with ground support throughout.", "meta": "Tailored to your own party", "tag": "Plan your private Umrah", "url": "Senyum-PrivateUmrah.html", "image": "Medina Saudi Arabia.jpg", "alt": "The city of Madinah, Saudi Arabia", "icon": "M13 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm-9 13v-3a9 9 0 0 1 18 0v3M23 5a5 5 0 0 1 0 10m4 13v-3a9 9 0 0 0-3-7"}, {"title": "DIY Umrah", "text": "Travel independently and choose the help you need, from visa and hotel bookings to guides, transport and airport transfers.", "meta": "Choose your services", "tag": "Explore DIY Umrah", "url": "Senyum-UmrahDiy.html", "image": "Kaaba Mecca.jpg", "alt": "The Kaaba at Masjid al-Haram, Mecca", "icon": "M16 29a13 13 0 1 0 0-26 13 13 0 0 0 0 26Zm6-19-3 9-9 3 3-9 9-3Z"}];
 
   destinations = [
     { name: 'China', tag: 'Group · Private' }, { name: 'Japan', tag: 'Private' }, { name: 'Korea', tag: 'Group · Private' },

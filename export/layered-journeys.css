@@ -451,23 +451,28 @@ header button[aria-controls='mobile-navigation']{background:#e5f4eb!important;co
 @media(prefers-reduced-motion:reduce){.home-dropdown-panel,.home-mobile-panel{transform:none;transition:none}.home-umrah-panel{transition:none}}
 @media(max-width:1179px){.home-mobile-panel nav{padding-bottom:82px!important}}
 
-/* A compact set of journey links, with no image or oversized panels. */
-#umrah.umrah-simple>h2{font-size:clamp(30px,3vw,42px);line-height:1.15;letter-spacing:-.025em;color:#103f35;margin:0 0 22px}
-#umrah.umrah-simple .umrah-options{grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
-#umrah.umrah-simple .umrah-options>a{display:grid;grid-template-columns:minmax(0,1fr) 18px;column-gap:12px;row-gap:8px;padding:18px 0 22px;min-width:0;border-bottom:1px solid #a7cbbb;border-radius:0;background:transparent;transform:none;align-content:start}
-#umrah.umrah-simple .umrah-options h3{grid-column:1;grid-row:1;font-size:20px!important;line-height:1.3!important;font-weight:800}
-#umrah.umrah-simple .umrah-options p{grid-column:1;grid-row:2;font-size:14px!important;line-height:1.5!important;font-weight:400!important;margin:0}
-#umrah.umrah-simple .umrah-option-link{grid-column:2;grid-row:1/3;align-self:center;display:flex;min-height:0;margin:0;color:#08735b}
-#umrah.umrah-simple .umrah-option-link svg{width:18px;height:18px}
-#umrah.umrah-simple .umrah-options>a:hover{border-color:#08735b}
-#umrah.umrah-simple .umrah-options>a:hover h3{color:#08735b}
-#umrah.umrah-simple .umrah-options>a:focus-visible{outline:3px solid #08735b;outline-offset:6px}
-@media(max-width:1100px){#umrah.umrah-simple .umrah-options{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px}}
+/* Four distinct travel choices on one calm forest-green surface. */
+#umrah.umrah-collection{background:#103f35;border:0;border-radius:20px;padding:clamp(28px,4vw,52px);margin-top:56px}
+#umrah.umrah-collection>h2{font-size:clamp(30px,3vw,42px);line-height:1.15;letter-spacing:-.025em;color:#f8fbf8;margin:0 0 32px}
+#umrah.umrah-collection>h2 em{color:#d9ed92;font-style:normal}
+#umrah.umrah-collection .umrah-options{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+#umrah.umrah-collection .umrah-options>a{display:grid;grid-template-columns:1fr 24px;grid-template-rows:48px auto 1fr;column-gap:10px;row-gap:0;min-width:0;padding:24px 22px;border:0;border-radius:12px;background:#f8fbf8;color:#103f35;transform:none}
+#umrah.umrah-collection .umrah-choice-icon{grid-column:1;grid-row:1;width:40px;height:40px;fill:none;stroke:#08735b;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transform:none}
+#umrah.umrah-collection .umrah-option-link{grid-column:2;grid-row:1;display:flex;align-self:start;min-height:0;margin:4px 0 0;color:#08735b}
+#umrah.umrah-collection .umrah-option-link svg{width:20px;height:20px}
+#umrah.umrah-collection .umrah-options h3{grid-column:1/-1;grid-row:2;font-size:21px!important;line-height:1.25!important;font-weight:800;text-wrap:wrap;margin:22px 0 10px}
+#umrah.umrah-collection .umrah-options p{grid-column:1/-1;grid-row:3;color:#406357;font-size:14px!important;line-height:1.5!important;font-weight:400!important;margin:0}
+#umrah.umrah-collection .umrah-options>a:hover{background:#e5f3b9}
+#umrah.umrah-collection .umrah-options>a:focus-visible{outline:3px solid #d9ed92;outline-offset:5px}
+@media(max-width:1100px){#umrah.umrah-collection .umrah-options{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){
- #umrah.umrah-simple>h2{font-size:30px;margin-bottom:14px}
- #umrah.umrah-simple .umrah-options{gap:6px 18px}
- #umrah.umrah-simple .umrah-options>a{padding:16px 0 18px;column-gap:8px}
- #umrah.umrah-simple .umrah-options h3{font-size:16px!important}
- #umrah.umrah-simple .umrah-options p{font-size:12px!important}
- #umrah.umrah-simple .umrah-option-link svg{width:16px;height:16px}
+ #umrah.umrah-collection{padding:24px 16px;border-radius:16px;margin-top:36px}
+ #umrah.umrah-collection>h2{font-size:30px;margin-bottom:24px}
+ #umrah.umrah-collection .umrah-options{gap:12px}
+ #umrah.umrah-collection .umrah-options>a{padding:18px 14px;grid-template-columns:1fr 18px;grid-template-rows:32px auto 1fr;column-gap:6px}
+ #umrah.umrah-collection .umrah-choice-icon{width:30px;height:30px}
+ #umrah.umrah-collection .umrah-option-link{margin-top:4px}
+ #umrah.umrah-collection .umrah-option-link svg{width:16px;height:16px}
+ #umrah.umrah-collection .umrah-options h3{font-size:16px!important;margin:18px 0 8px}
+ #umrah.umrah-collection .umrah-options p{font-size:12px!important}
 }
