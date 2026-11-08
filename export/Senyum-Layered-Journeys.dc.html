@@ -127,7 +127,7 @@ header nav[aria-label='Primary'] > div > div a { color:#103f35 !important; }
 .umrah-options > a { display:flex; flex-direction:column; background:#f8fbf8; padding:28px 24px; border-radius:12px; color:#103f35; }
 .umrah-options h3 { font-size:21px; line-height:1.2; }
 .umrah-options p { color:#406357; font-size:14px; line-height:1.6; margin:16px 0 26px; }
-.umrah-options span { margin-top:auto; display:flex; justify-content:space-between; align-items:center; gap:8px; font-weight:800; font-size:13px; }
+.umrah-options > a > span { margin-top:auto; display:flex; justify-content:space-between; align-items:center; gap:8px; font-weight:800; font-size:13px; }
 .umrah-options > a:hover { background:#d9ed92; }
 /* Two equally sized tour paths, with generous gutters on wide displays. */
 .journey-type-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px; }
@@ -381,7 +381,7 @@ header button[aria-label='Open search'],header button[aria-label='Open menu'] { 
  .package-results article a { display:flex; align-items:center; justify-content:center; min-height:44px; padding:10px 8px !important; margin-top:12px !important; font-size:12px !important; line-height:1.4; }
  #umrah .umrah-options h3 { font-size:17px !important; line-height:1.25 !important; }
  #umrah .umrah-options p { font-size:13px !important; line-height:1.5 !important; margin:12px 0 18px; }
- .umrah-options span { min-height:44px; font-size:12px; line-height:1.4; gap:6px; }
+ .umrah-options > a > span { min-height:44px; font-size:12px; line-height:1.4; gap:6px; }
  .umrah-options svg,.journey-type svg { width:16px; height:16px; }
  .journey-type { min-width:0; }
  .journey-type > img,.journey-type__image { aspect-ratio:4/3; border-radius:10px; }
@@ -486,6 +486,42 @@ header button[aria-controls='mobile-navigation']{background:#e5f4eb!important;co
 @media(min-width:1180px){.home-mobile-panel{display:none}}
 @media(prefers-reduced-motion:reduce){.home-dropdown-panel,.home-mobile-panel{transform:none;transition:none}.home-umrah-panel{transition:none}}
 @media(max-width:1179px){.home-mobile-panel nav{padding-bottom:82px!important}}
+
+/* A real Umrah moment leads; the four journey choices carry only the essentials. */
+#umrah.umrah-visual{display:grid;grid-template-columns:1fr 1.1fr;grid-template-rows:auto 1fr;column-gap:clamp(32px,5vw,72px);row-gap:30px;align-items:start}
+.umrah-visual-heading{grid-column:2;grid-row:1}
+#umrah .umrah-visual-heading h2{font-size:clamp(36px,3.5vw,52px);line-height:1.08;letter-spacing:-.025em;color:#103f35}
+.umrah-visual-heading p{font-size:16px;line-height:1.6;color:#406357;margin-top:16px}
+.umrah-visual-photo{grid-column:1;grid-row:1/3;margin:0;align-self:stretch;min-height:440px;position:relative;border-radius:16px;overflow:hidden;background:#c6dfd2}
+.umrah-visual-photo img{display:block;width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:50% 63%}
+#umrah.umrah-visual .umrah-options{grid-column:2;grid-row:2;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px;align-self:stretch}
+#umrah.umrah-visual .umrah-options>a{padding:22px 0 16px;border-top:1px solid #b3d3c2;border-radius:0;background:transparent;min-width:0;transform:none}
+#umrah.umrah-visual .umrah-options h3{font-size:21px!important;line-height:1.25!important;font-weight:800}
+#umrah.umrah-visual .umrah-options p{font-size:14px!important;font-weight:400!important;line-height:1.5!important;margin:10px 0 20px}
+#umrah.umrah-visual .umrah-option-link{display:flex;min-height:44px;gap:12px;justify-content:flex-start;font-size:12px;font-weight:800;color:#08735b;margin-top:auto}
+#umrah.umrah-visual .umrah-option-link svg{width:18px;height:18px}
+#umrah.umrah-visual .umrah-options>a:hover h3{color:#08735b}
+#umrah.umrah-visual .umrah-options>a:focus-visible{outline:3px solid #08735b;outline-offset:6px}
+@media(max-width:900px){
+ #umrah.umrah-visual{grid-template-columns:1fr;row-gap:24px}
+ .umrah-visual-heading{grid-column:1;grid-row:1}
+ .umrah-visual-photo{grid-column:1;grid-row:2;min-height:0;height:clamp(210px,38vw,320px)}
+ .umrah-visual-photo img{object-position:50% 64%}
+ #umrah.umrah-visual .umrah-options{grid-column:1;grid-row:3;gap:8px 24px}
+ #umrah .umrah-visual-heading h2{font-size:36px}
+ .umrah-visual-heading h2 br{display:none}
+}
+@media(max-width:600px){
+ #umrah.umrah-visual{row-gap:20px}
+ #umrah .umrah-visual-heading h2{font-size:32px}
+ .umrah-visual-heading p{font-size:14px;margin-top:12px}
+ .umrah-visual-photo{height:210px;border-radius:12px}
+ #umrah.umrah-visual .umrah-options{gap:4px 18px}
+ #umrah.umrah-visual .umrah-options>a{padding:16px 0 6px}
+ #umrah.umrah-visual .umrah-options h3{font-size:17px!important}
+ #umrah.umrah-visual .umrah-options p{font-size:12px!important;margin:8px 0}
+ #umrah.umrah-visual .umrah-option-link{font-size:11px;gap:8px}
+}
 </style></helmet>
 <div style="min-height:100vh;background:#f8fbf8">
 
@@ -661,10 +697,10 @@ header button[aria-controls='mobile-navigation']{background:#e5f4eb!important;co
       <div class="care-intro"><h2>Your faith. Your comfort.<br />Part of the plan.</h2><p><span class="desktop-only">Muslim-friendly travel, thoughtfully arranged. From the meals you share to the moments you pause for prayer, we plan around what matters to you.</span><span class="mobile-only">Halal meals, prayer-friendly plans and personal support.</span></p><a class="text-link" href="Senyum-About.html">Get to know Senyum <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg></a></div>
       <div class="care-benefits"><sc-for list="{{ benefits }}" as="b" hint-placeholder-count="6"><div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6" /></svg><div><h3>{{ b.title }}</h3><p>{{ b.text }}</p></div></div></sc-for></div>
     </div>
-    <div id="umrah" class="umrah-within-care">
-      <div class="section-heading"><div><h2>Your Umrah, with care<br />at every step.</h2><p><span class="desktop-only">Focus on your ibadah, with the right support around you. Choose a guided group, a ladies-only journey, a private arrangement or flexible DIY services.</span><span class="mobile-only">Four ways to make your sacred journey.</span></p></div><a class="button-dark" href="Senyum-UmrahGroup.html">Explore Umrah packages <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg></a></div>
-      <div class="umrah-options"><sc-for list="{{ umrah }}" as="u" hint-placeholder-count="4"><a href="{{ u.url }}"><h3>{{ u.title }}</h3><p class="desktop-only">{{ u.text }}</p><p class="mobile-only">{{ u.meta }}</p><span><span class="desktop-only">{{ u.tag }}</span><span class="mobile-only">View details</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg></span></a></sc-for></div>
-      <div class="umrah-service-note"><p><strong>Private &amp; DIY support, your way.</strong> Choose help with visas, hotels, mutawif or mutawifah, flights, high-speed trains, ground transport, ziarah, airport transfers and Umrah insurance.</p><p>Dates, prices, hotel choices and package inclusions are confirmed with Senyum before booking.</p></div>
+    <div id="umrah" class="umrah-within-care umrah-visual" aria-labelledby="umrah-heading">
+      <div class="umrah-visual-heading"><h2 id="umrah-heading">Your Umrah, <br />with care.</h2><p>Choose the journey that feels right for you.</p></div>
+      <figure class="umrah-visual-photo"><img src="assets/umrah/senyum-pilgrims-makkah.webp" alt="Senyum travellers together in front of the Kaaba in Makkah" width="1152" height="2048" loading="lazy" /></figure>
+      <div class="umrah-options"><sc-for list="{{ umrah }}" as="u" hint-placeholder-count="4"><a href="{{ u.url }}"><h3>{{ u.title }}</h3><p>{{ u.meta }}</p><span class="umrah-option-link">View journey <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg></span></a></sc-for></div>
     </div>
   </div>
 </section>
