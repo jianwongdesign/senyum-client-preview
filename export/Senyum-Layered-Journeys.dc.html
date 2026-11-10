@@ -341,7 +341,13 @@ header button[aria-label='Open search'],header button[aria-label='Open menu'] { 
 #enquire > footer.journey-footer { position:relative; z-index:auto; border-radius:0; margin:64px calc(-1 * var(--page-gutter)) 0; width:calc(100% + 2 * var(--page-gutter)); padding:52px var(--page-gutter) 24px; box-shadow:none; }
 #enquire > footer.journey-footer > div { max-width:1440px !important; }
 #enquire .journey-review { max-width:1440px; margin:0 auto; padding-top:8px; }
-@media(max-width:767px) { #enquire > footer.journey-footer { margin-top:48px; padding-top:40px; } }
+@media(max-width:767px) {
+ #enquire > footer.journey-footer { margin-top:48px; padding-top:40px; }
+ .journey-footer .journey-footer-grid { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:32px 20px !important; }
+ .journey-footer-grid > div { min-width:0; }
+ .journey-footer-grid > div:first-child { overflow-wrap:anywhere; }
+ .journey-footer-grid img.senyum-brand-logo { max-width:100%; }
+}
 /* Tour paths and the destination directory form one uninterrupted surface. */
 #custom #dest.journey-destinations { position:relative; background:transparent !important; margin-top:64px; padding:48px 0 0 !important; border-top:1px solid #c6dfd2; border-radius:0; box-shadow:none; scroll-margin-top:120px; }
 #custom #dest > div { max-width:none !important; }
@@ -857,7 +863,7 @@ header button[aria-controls='mobile-navigation']{background:#e5f4eb!important;co
   </div>
 <footer class="journey-footer" role="contentinfo" style="background:#183D35;color:#C4D3CE;padding:clamp(40px,5vw,68px) clamp(18px,4vw,52px) 0">
     <div style="max-width:1400px;margin:0 auto">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:clamp(24px,3vw,44px);padding-bottom:38px">
+      <div class="journey-footer-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:clamp(24px,3vw,44px);padding-bottom:38px">
         <div>
           <img class="senyum-brand-logo" src="assets/senyum-rihlat-logo-mono.png" alt="Senyum Rihlat" width="1587" height="1256" />
           <p style="margin-top:16px;font-size:14px;line-height:1.7;font-weight:600;color:#93A5A0;max-width:274px">Senyum Pte. Ltd.<br />Travel Agent Licence TA03740 · Active<br />80 Changi Road, #02-29 Centropod @ Changi, Singapore 419715</p>

@@ -305,7 +305,13 @@ header button[aria-label='Open search'],header button[aria-label='Open menu'] { 
 #enquire > footer.journey-footer { position:relative; z-index:auto; border-radius:0; margin:64px calc(-1 * var(--page-gutter)) 0; width:calc(100% + 2 * var(--page-gutter)); padding:52px var(--page-gutter) 24px; box-shadow:none; }
 #enquire > footer.journey-footer > div { max-width:1440px !important; }
 #enquire .journey-review { max-width:1440px; margin:0 auto; padding-top:8px; }
-@media(max-width:767px) { #enquire > footer.journey-footer { margin-top:48px; padding-top:40px; } }
+@media(max-width:767px) {
+ #enquire > footer.journey-footer { margin-top:48px; padding-top:40px; }
+ .journey-footer .journey-footer-grid { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:32px 20px !important; }
+ .journey-footer-grid > div { min-width:0; }
+ .journey-footer-grid > div:first-child { overflow-wrap:anywhere; }
+ .journey-footer-grid img.senyum-brand-logo { max-width:100%; }
+}
 /* Tour paths and the destination directory form one uninterrupted surface. */
 #custom #dest.journey-destinations { position:relative; background:transparent !important; margin-top:64px; padding:48px 0 0 !important; border-top:1px solid #c6dfd2; border-radius:0; box-shadow:none; scroll-margin-top:120px; }
 #custom #dest > div { max-width:none !important; }
