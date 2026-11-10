@@ -305,6 +305,11 @@ header button[aria-label='Open search'],header button[aria-label='Open menu'] { 
 #enquire > footer.journey-footer { position:relative; z-index:auto; border-radius:0; margin:64px calc(-1 * var(--page-gutter)) 0; width:calc(100% + 2 * var(--page-gutter)); padding:52px var(--page-gutter) 24px; box-shadow:none; }
 #enquire > footer.journey-footer > div { max-width:1440px !important; }
 #enquire .journey-review { max-width:1440px; margin:0 auto; padding-top:8px; }
+.journey-footer-socials { display:flex; flex-wrap:wrap; gap:4px; margin-top:16px; }
+.journey-social-link { display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; flex:0 0 44px; color:#e4ede9; border-radius:8px; }
+.journey-social-link:hover { color:#d9ed92; background:rgba(255,255,255,.08); }
+.journey-social-link:focus-visible { outline:2px solid #d9ed92 !important; outline-offset:-2px !important; }
+.journey-social-link svg { display:block; }
 @media(max-width:767px) {
  #enquire > footer.journey-footer { margin-top:48px; padding-top:40px; }
  .journey-footer .journey-footer-grid { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:32px 20px !important; }
@@ -314,7 +319,7 @@ header button[aria-label='Open search'],header button[aria-label='Open menu'] { 
  .journey-footer-grid > div:first-child > p { margin-top:0 !important; max-width:none !important; }
  .journey-footer-grid > div:last-child { grid-column:1 / -1; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:20px; align-items:start; }
  .journey-footer-grid > div:last-child > h3 { grid-column:1 / -1; }
- .journey-footer-grid > div:last-child > div { flex-direction:column; align-items:flex-start; }
+ .journey-footer-grid .journey-footer-socials { flex-wrap:nowrap; gap:0; }
 }
 /* Tour paths and the destination directory form one uninterrupted surface. */
 #custom #dest.journey-destinations { position:relative; background:transparent !important; margin-top:64px; padding:48px 0 0 !important; border-top:1px solid #c6dfd2; border-radius:0; box-shadow:none; scroll-margin-top:120px; }
