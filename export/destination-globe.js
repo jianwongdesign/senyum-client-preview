@@ -1,7 +1,6 @@
-/* Compact mobile discovery. Real land geometry, user-controlled movement, no animation loop. */
+/* Responsive destination discovery. Real land geometry, user-controlled movement, no animation loop. */
 (() => {
   const section = document.querySelector('#dest');
-  const mobile = matchMedia('(max-width:767px)');
   if (!section) return;
   const destinations = __GLOBE_DESTINATIONS__;
   let initialized = false;
@@ -11,7 +10,7 @@
     document.head.append(script);
   });
   async function init() {
-    if (!mobile.matches || initialized) return;
+    if (initialized) return;
     initialized = true;
     try {
       await loadScript('assets/globe/d3-array.min.js');
@@ -21,11 +20,19 @@
       const land = await response.json();
       const root = document.createElement('div');
       root.className = 'destination-globe';
-      root.innerHTML = `<div class="destination-globe__stage"><svg class="destination-globe__map" viewBox="0 0 320 260" role="img" aria-label="Destination globe. Drag left or right to turn, tap a dot to choose. You can also use the country picker below."><circle cx="160" cy="130" r="120" fill="#dceee2"/><path class="globe-grid" fill="none" stroke="#bed7c8" stroke-width="0.65"/><path class="globe-land" fill="#76a58a" stroke="#eef7ef" stroke-width="0.45"/><g class="globe-pins"></g></svg><span class="destination-globe__label" aria-hidden="true"></span></div><div class="destination-globe__hint">Swipe to explore · Tap a dot</div><div class="destination-globe__picker"><button type="button" class="globe-prev" aria-label="Previous destination"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button><label><span class="globe-sr-only">Choose a destination</span><select class="globe-select"></select></label><button type="button" class="globe-next" aria-label="Next destination"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button></div><div class="destination-globe__journeys" aria-label="Journeys for selected destination"></div><span class="globe-sr-only globe-status" role="status" aria-live="polite"></span>`;
+      root.innerHTML = `<div class="destination-globe__visual"><div class="destination-globe__stage"><svg class="destination-globe__map" viewBox="0 0 320 260" role="img" aria-label="Destination globe. Drag left or right to turn, tap a dot to choose. You can also use the destination controls."><circle cx="160" cy="130" r="120" fill="#dceee2"/><path class="globe-grid" fill="none" stroke="#bed7c8" stroke-width="0.65"/><path class="globe-land" fill="#76a58a" stroke="#eef7ef" stroke-width="0.45"/><g class="globe-pins"></g></svg><span class="destination-globe__label" aria-hidden="true"></span></div><div class="destination-globe__hint"><span class="globe-touch-hint">Swipe to explore · Tap a dot</span><span class="globe-pointer-hint">Drag to explore · Click a destination</span></div></div><div class="destination-globe__explore"><h3 class="destination-globe__current"></h3><div class="destination-globe__index" role="group" aria-label="Choose a destination"></div><div class="destination-globe__picker"><button type="button" class="globe-prev" aria-label="Previous destination"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button><label><span class="globe-sr-only">Choose a destination</span><select class="globe-select"></select></label><button type="button" class="globe-next" aria-label="Next destination"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button></div><div class="destination-globe__journeys" aria-label="Journeys for selected destination"></div><span class="globe-sr-only globe-status" role="status" aria-live="polite"></span></div>`;
       const svg = root.querySelector('svg');
       const select = root.querySelector('select');
       const label = root.querySelector('.destination-globe__label');
       destinations.forEach((d, i) => select.add(new Option(d.name, i)));
+      const indexButtons = destinations.map((d, i) => {
+        const button = document.createElement('button');
+        button.type = 'button'; button.textContent = d.name;
+        button.setAttribute('aria-pressed', 'false');
+        button.onclick = () => choose(i);
+        root.querySelector('.destination-globe__index').append(button);
+        return button;
+      });
       const projection = d3.geoOrthographic().scale(120).translate([160, 130]).clipAngle(90).rotate([-90, -20]);
       const path = d3.geoPath(projection);
       const grid = d3.geoGraticule10();
@@ -48,6 +55,8 @@
         selected = (index + destinations.length) % destinations.length;
         const d = destinations[selected];
         select.value = selected;
+        root.querySelector('.destination-globe__current').textContent = d.name;
+        indexButtons.forEach((button, i) => button.setAttribute('aria-pressed', String(i === selected)));
         if (centre) projection.rotate([-d.coordinates[0], -d.coordinates[1]]);
         const links = root.querySelector('.destination-globe__journeys');
         links.replaceChildren();
@@ -90,11 +99,12 @@
       section.firstElementChild.append(root);
       choose(0, false);
       section.classList.add('has-globe');
+      const introduction = section.querySelector(':scope > div > div:first-child p');
+      if (introduction) introduction.textContent = 'Turn the globe or choose a destination to explore its journeys.';
     } catch (error) {
       // Preserve the fully linked original directory when map assets are unavailable.
       initialized = false;
     }
   }
-  mobile.addEventListener('change', init);
   init();
 })();
