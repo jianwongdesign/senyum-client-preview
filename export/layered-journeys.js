@@ -250,3 +250,30 @@
  sync();
  matchMedia('(min-width:1180px)').addEventListener('change',()=>this.setState({menu:false,dropdown:null,mUmrah:false}));
 })();
+
+/* Keep optional enquiry details compact on phones without duplicating form fields. */
+(() => {
+ const form = document.querySelector('.enquiry-form');
+ if (!form) return;
+ const mobile = matchMedia('(max-width:767px)');
+ const disclosures = [...document.querySelectorAll('.enquiry-more,.enquiry-contact')];
+ const mobileState = new WeakMap();
+ disclosures.forEach(details => { details.open = !mobile.matches; });
+ mobile.addEventListener('change', () => {
+  disclosures.forEach(details => {
+   if (!mobile.matches) mobileState.set(details, window.senyumDetails?.isOpen(details) ?? details.open);
+   const open = !mobile.matches || (mobileState.get(details) ?? false);
+   if (!open && details.contains(document.activeElement)) details.querySelector('summary').focus();
+   if (window.senyumDetails) window.senyumDetails.set(details, open);
+   else details.open = open;
+  });
+ });
+ form.addEventListener('invalid', event => {
+  const details = event.target.closest('.enquiry-more');
+  if (details && !(window.senyumDetails?.isOpen(details) ?? details.open)) {
+   if (window.senyumDetails) window.senyumDetails.set(details, true);
+   else details.open = true;
+   requestAnimationFrame(() => event.target.focus());
+  }
+ }, true);
+})();
