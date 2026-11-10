@@ -133,10 +133,10 @@ header nav[aria-label='Primary'] > div > div a { color:#103f35 !important; }
 .journey-type-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px; }
 .journey-type { display:flex; flex-direction:column; color:#103f35; }
 .journey-type > img,.journey-type__image { display:block; position:relative; width:100%; height:auto; aspect-ratio:16/10; object-fit:cover; border-radius:14px; overflow:hidden; background:#d5e0d2; }
-.journey-type__copy { padding:26px 0 0; }
+.journey-type__copy { display:flex; flex-direction:column; flex:1; padding:26px 0 0; }
 .journey-type h3 { font-size:32px; letter-spacing:-.02em; line-height:1.15; }
-.journey-type p { color:#406357; font-size:16px; line-height:1.6; max-width:500px; margin-top:12px; }
-.journey-type__copy > span { display:flex; width:fit-content; gap:28px; align-items:center; font-size:15px; font-weight:800; margin-top:24px; padding-bottom:9px; border-bottom:1px solid #809d8e; }
+.journey-type p { color:#406357; font-size:16px; line-height:1.6; max-width:500px; margin-top:12px; margin-bottom:24px; }
+.journey-type__copy > span { display:flex; width:fit-content; gap:28px; align-items:center; font-size:15px; font-weight:800; margin-top:auto; padding-bottom:9px; border-bottom:1px solid #809d8e; }
 .journey-type:hover .journey-type__copy > span { color:#08735b; border-color:#08735b; }
 #enquire form { scroll-margin-top:120px; }
 #enquire input,#enquire select { min-height:48px; }
@@ -414,7 +414,8 @@ header button[aria-label='Open search'],header button[aria-label='Open menu'] { 
  #umrah .umrah-options > a > span span { min-height:0; margin:0; }
  .umrah-service-note { display:none; }
  .journey-type p,#custom > .journey-container > .section-heading > p,#custom #dest p { display:none; }
- .journey-type__copy > span { margin-top:12px; }
+ .journey-type__copy { row-gap:12px; }
+ .journey-type__copy > span { margin-top:auto; }
 }
 
 /* Let supporting text fill its column instead of imposing an extra text measure. */
@@ -511,6 +512,29 @@ header button[aria-controls='mobile-navigation']{background:#e5f4eb!important;co
  #umrah.umrah-collection .umrah-option-link svg{width:16px;height:16px}
  #umrah.umrah-collection .umrah-options h3{font-size:16px!important;margin:18px 0 8px}
  #umrah.umrah-collection .umrah-options p{font-size:12px!important}
+}
+
+/* A compact, user-controlled destination globe replaces the mobile directory. */
+.destination-globe { display:none; }
+@media(max-width:767px) {
+ #custom #dest.has-globe > div > div:nth-child(2) { display:none !important; }
+ #custom #dest .destination-globe { display:block; max-width:360px; margin:18px auto 0; }
+ .destination-globe__stage { width:100%; max-width:300px; margin:auto; position:relative; }
+ .destination-globe__map { display:block; width:100%; touch-action:pan-y; cursor:grab; user-select:none; }
+ .destination-globe__map:active { cursor:grabbing; }
+ .destination-globe__label { position:absolute; transform:translate(-50%,10px); pointer-events:none; white-space:nowrap; background:#103f35; color:#fff; font-size:12px; line-height:1.4; font-weight:800; padding:4px 9px; border-radius:6px; }
+ .destination-globe__label[hidden] { display:none; }
+ .destination-globe__hint { text-align:center; color:#406357; font-size:12px; margin:4px 0 14px; }
+ .destination-globe__picker { display:flex; align-items:center; gap:8px; }
+ .destination-globe__picker button { display:grid; place-items:center; flex:0 0 44px; height:44px; border:1px solid #b0cdbb; border-radius:50%; background:transparent; color:#103f35; cursor:pointer; }
+ .destination-globe__picker label { flex:1; min-width:0; }
+ .destination-globe__picker select { width:100%; height:44px; padding:0 10px; border:0; border-bottom:1px solid #a3bfad; border-radius:0; background:transparent; font:inherit; font-size:19px; font-weight:800; color:#103f35; cursor:pointer; }
+ .destination-globe svg:not(.destination-globe__map) { width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.7; flex-shrink:0; }
+ .destination-globe__journeys { display:flex; gap:10px; margin-top:12px; }
+ #custom #dest .destination-globe__journeys a { display:flex; flex:1; min-height:44px; justify-content:space-between; flex-direction:row; align-items:center !important; padding:10px 12px !important; font-size:13px !important; gap:6px !important; border-radius:8px; background:#103f35 !important; color:white !important; }
+ #custom #dest .destination-globe__journeys a:hover { background:#08735b !important; }
+ .destination-globe :is(button,select,a):focus-visible { outline:3px solid #08735b; outline-offset:3px; }
+ .globe-sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
 }
 </style></helmet>
 <div style="min-height:100vh;background:#f8fbf8">
@@ -1281,7 +1305,110 @@ class Component extends DCLogic {
  });
 })();
 
+/* Compact mobile discovery. Real land geometry, user-controlled movement, no animation loop. */
+(() => {
+  const section = document.querySelector('#dest');
+  const mobile = matchMedia('(max-width:767px)');
+  if (!section) return;
+  const destinations = [{"name": "China", "coordinates": [104, 35], "journeys": [{"label": "Group tours", "url": "Senyum-Layered-Journeys.html?tour=group&destination=China#finder"}, {"label": "Private tours", "url": "Senyum-Layered-Journeys.html?tour=private&destination=China#finder"}]}, {"name": "Japan", "coordinates": [138, 37], "journeys": [{"label": "View journeys", "url": "https://senyum.com.sg/japan/"}]}, {"name": "Korea", "coordinates": [128, 36], "journeys": [{"label": "Group tours", "url": "Senyum-Layered-Journeys.html?tour=group&destination=Korea#finder"}, {"label": "Private tours", "url": "Senyum-Layered-Journeys.html?tour=private&destination=Korea#finder"}]}, {"name": "Taiwan", "coordinates": [121, 24], "journeys": [{"label": "View journeys", "url": "https://senyum.com.sg/taiwan/"}]}, {"name": "Vietnam", "coordinates": [108, 16], "journeys": [{"label": "Private tours", "url": "Senyum-Layered-Journeys.html?tour=private&destination=Vietnam#finder"}]}, {"name": "Cambodia", "coordinates": [105, 12], "journeys": [{"label": "Private tours", "url": "Senyum-Layered-Journeys.html?tour=private&destination=Cambodia#finder"}]}, {"name": "Thailand", "coordinates": [101, 15], "journeys": [{"label": "Private tours", "url": "Senyum-Layered-Journeys.html?tour=private&destination=Thailand#finder"}]}, {"name": "Malaysia", "coordinates": [102, 4], "journeys": [{"label": "Private tours", "url": "Senyum-Layered-Journeys.html?tour=private&destination=Malaysia#finder"}]}, {"name": "Brunei", "coordinates": [115, 5], "journeys": [{"label": "Private tours", "url": "Senyum-Layered-Journeys.html?tour=private&destination=Brunei#finder"}]}, {"name": "Indonesia", "coordinates": [118, -3], "journeys": [{"label": "Private tours", "url": "Senyum-Layered-Journeys.html?tour=private&destination=Indonesia#finder"}]}, {"name": "Pakistan", "coordinates": [69, 30], "journeys": [{"label": "Private tours", "url": "Senyum-Layered-Journeys.html?tour=private&destination=Pakistan#finder"}]}, {"name": "Uzbekistan", "coordinates": [64, 41], "journeys": [{"label": "Group tours", "url": "Senyum-Layered-Journeys.html?tour=group&destination=Uzbekistan#finder"}, {"label": "Private tours", "url": "Senyum-Layered-Journeys.html?tour=private&destination=Uzbekistan#finder"}]}, {"name": "Turkey", "coordinates": [35, 39], "journeys": [{"label": "Group tours", "url": "Senyum-Layered-Journeys.html?tour=group&destination=Turkey#finder"}, {"label": "Private tours", "url": "Senyum-Layered-Journeys.html?tour=private&destination=Turkey#finder"}]}, {"name": "Bosnia", "coordinates": [18, 44], "journeys": [{"label": "Group tours", "url": "Senyum-Layered-Journeys.html?tour=group&destination=Bosnia#finder"}, {"label": "Private tours", "url": "Senyum-Layered-Journeys.html?tour=private&destination=Bosnia#finder"}]}, {"name": "Egypt", "coordinates": [30, 27], "journeys": [{"label": "Private tours", "url": "Senyum-Layered-Journeys.html?tour=private&destination=Egypt#finder"}]}, {"name": "Jordan", "coordinates": [36, 31], "journeys": [{"label": "Group tours", "url": "Senyum-Layered-Journeys.html?tour=group&destination=Jordan#finder"}, {"label": "Private tours", "url": "Senyum-Layered-Journeys.html?tour=private&destination=Jordan#finder"}]}, {"name": "Maldives", "coordinates": [73, 3], "journeys": [{"label": "Private tours", "url": "Senyum-Layered-Journeys.html?tour=private&destination=Maldives#finder"}]}];
+  let initialized = false;
+  const loadScript = src => new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = src; script.onload = resolve; script.onerror = reject;
+    document.head.append(script);
+  });
+  async function init() {
+    if (!mobile.matches || initialized) return;
+    initialized = true;
+    try {
+      await loadScript('assets/globe/d3-array.min.js');
+      await loadScript('assets/globe/d3-geo.min.js');
+      const response = await fetch('assets/globe/land.json');
+      if (!response.ok) throw Error('Globe unavailable');
+      const land = await response.json();
+      const root = document.createElement('div');
+      root.className = 'destination-globe';
+      root.innerHTML = `<div class="destination-globe__stage"><svg class="destination-globe__map" viewBox="0 0 320 260" role="img" aria-label="Destination globe. Drag left or right to turn, tap a dot to choose. You can also use the country picker below."><circle cx="160" cy="130" r="120" fill="#dceee2"/><path class="globe-grid" fill="none" stroke="#bed7c8" stroke-width="0.65"/><path class="globe-land" fill="#76a58a" stroke="#eef7ef" stroke-width="0.45"/><g class="globe-pins"></g></svg><span class="destination-globe__label" aria-hidden="true"></span></div><div class="destination-globe__hint">Swipe to explore · Tap a dot</div><div class="destination-globe__picker"><button type="button" class="globe-prev" aria-label="Previous destination"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button><label><span class="globe-sr-only">Choose a destination</span><select class="globe-select"></select></label><button type="button" class="globe-next" aria-label="Next destination"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button></div><div class="destination-globe__journeys" aria-label="Journeys for selected destination"></div><span class="globe-sr-only globe-status" role="status" aria-live="polite"></span>`;
+      const svg = root.querySelector('svg');
+      const select = root.querySelector('select');
+      const label = root.querySelector('.destination-globe__label');
+      destinations.forEach((d, i) => select.add(new Option(d.name, i)));
+      const projection = d3.geoOrthographic().scale(120).translate([160, 130]).clipAngle(90).rotate([-90, -20]);
+      const path = d3.geoPath(projection);
+      const grid = d3.geoGraticule10();
+      let selected = 0;
+      let drag = null;
+      let frame = 0;
+      let visiblePoints = [];
+      function render() {
+        frame = 0;
+        root.querySelector('.globe-land').setAttribute('d', path(land));
+        root.querySelector('.globe-grid').setAttribute('d', path(grid));
+        const centre = projection.invert([160,130]);
+        visiblePoints = destinations.map((d, index) => ({...d, index, point:projection(d.coordinates)})).filter(d => d3.geoDistance(d.coordinates, centre) < Math.PI / 2 - .04);
+        root.querySelector('.globe-pins').innerHTML = visiblePoints.map(d => `<circle cx="${d.point[0]}" cy="${d.point[1]}" r="${d.index === selected ? 6 : 3.5}" fill="${d.index === selected ? '#103f35' : '#f8fbf8'}" stroke="#103f35" stroke-width="1.4"/>`).join('');
+        const current = visiblePoints.find(d => d.index === selected);
+        label.hidden = !current;
+        if (current) { label.textContent = current.name; label.style.left = (current.point[0] / 320 * 100) + '%'; label.style.top = (current.point[1] / 260 * 100) + '%'; }
+      }
+      function choose(index, centre = true) {
+        selected = (index + destinations.length) % destinations.length;
+        const d = destinations[selected];
+        select.value = selected;
+        if (centre) projection.rotate([-d.coordinates[0], -d.coordinates[1]]);
+        const links = root.querySelector('.destination-globe__journeys');
+        links.replaceChildren();
+        for (const journey of d.journeys) {
+          const a = document.createElement('a'); a.href = journey.url; a.textContent = journey.label;
+          a.setAttribute('aria-label', journey.label + ' in ' + d.name);
+          a.insertAdjacentHTML('beforeend','<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg>');
+          links.append(a);
+        }
+        root.querySelector('.globe-status').textContent = d.name + ': ' + d.journeys.map(j => j.label).join(', ');
+        render();
+      }
+      root.querySelector('.globe-prev').onclick = () => choose(selected - 1);
+      root.querySelector('.globe-next').onclick = () => choose(selected + 1);
+      select.onchange = () => choose(Number(select.value));
+      svg.addEventListener('pointerdown', e => {
+        if (e.button !== 0) return;
+        drag = {x:e.clientX, y:e.clientY, rotation:projection.rotate(), moved:false};
+        svg.setPointerCapture(e.pointerId);
+      });
+      svg.addEventListener('pointermove', e => {
+        if (!drag) return;
+        const dx = e.clientX - drag.x;
+        if (Math.abs(dx) > 5) drag.moved = true;
+        if (!drag.moved) return;
+        projection.rotate([drag.rotation[0] + dx * .6, drag.rotation[1]]);
+        if (!frame) frame = requestAnimationFrame(render);
+      });
+      svg.addEventListener('pointerup', e => {
+        if (!drag) return;
+        if (!drag.moved && Math.abs(e.clientY - drag.y) < 8) {
+          const rect = svg.getBoundingClientRect();
+          const x = (e.clientX-rect.left)/rect.width*320, y = (e.clientY-rect.top)/rect.height*260;
+          const nearest = visiblePoints.map(d => ({...d, distance:Math.hypot(d.point[0]-x,d.point[1]-y)})).sort((a,b)=>a.distance-b.distance)[0];
+          if (nearest && nearest.distance < 18) choose(nearest.index, false);
+        }
+        drag = null;
+      });
+      svg.addEventListener('pointercancel', () => { drag = null; });
+      section.firstElementChild.append(root);
+      choose(0, false);
+      section.classList.add('has-globe');
+    } catch (error) {
+      // Preserve the fully linked original directory when map assets are unavailable.
+      initialized = false;
+    }
+  }
+  mobile.addEventListener('change', init);
+  init();
+})();
+
 const tourRoute = new URLSearchParams(location.search).get('tour'); if (tourRoute === 'private' || tourRoute === 'group') { this.setState({mode: tourRoute, visibleCount: 6, dest: 'Any destination', applied: false}); requestAnimationFrame(() => window.senyumNavigate(document.getElementById(location.hash.slice(1)) || document.querySelector('#finder'), 'instant')); }
+
+const destinationRoute = new URLSearchParams(location.search).get('destination'); if (tourRoute && destinationRoute && [...document.querySelector('#hero-destination').options].some(o => o.value === destinationRoute)) { this.setState({dest: destinationRoute, applied: true}); }
 
 if (!tourRoute && location.hash) { const target = document.getElementById(location.hash.slice(1)); if (target) requestAnimationFrame(() => window.senyumNavigate(target, 'instant')); }
 
