@@ -24,3 +24,9 @@
 @media(max-width:600px){.tour-cover--contain img{height:280px;padding:10px 10px 44px}.day-content>p+p{margin-top:12px}.tour-cover--contain figcaption{inset:auto 16px 12px}}
 .itinerary-day[data-expanded='false'] .day-toggle{transform:none}
 .itinerary-day[data-expanded='true'] .day-toggle{transform:rotate(45deg)}
+
+/* Keep photography attribution beside its image, outside the footer. */
+.tour-intro > .photo-credit{color:var(--muted);font-size:12px;margin-top:8px;padding-top:0}
+.tour-intro > .photo-credit summary{min-height:44px;display:flex;align-items:center;gap:8px}
+.tour-intro > .photo-credit summary::before{content:"+";font-size:16px}
+.tour-intro > .photo-credit[open] summary::before{content:"−"}

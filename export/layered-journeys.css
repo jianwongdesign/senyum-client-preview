@@ -160,7 +160,7 @@ footer img.senyum-brand-logo { width:150px !important; height:auto !important; b
 
 
 .senyum-brand-logo { filter:brightness(0) invert(1); }
-header .senyum-brand-logo--colour { filter:none; }
+header .senyum-brand-logo--colour { filter:brightness(1.05); mix-blend-mode:multiply; }
 /* Keep the main message balanced above the route links at every viewport height. */
 
 .hero-scroll { color:#fffdf4 !important; }

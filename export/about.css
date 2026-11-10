@@ -75,3 +75,6 @@ p{max-width:none;text-wrap:wrap;white-space:normal}
  .site-nav.is-open{visibility:visible;opacity:1;transform:none;pointer-events:auto;transition-delay:0s}
 }
 @media(prefers-reduced-motion:reduce){.site-nav{transform:none;transition:none}.nav-dropdown summary svg{transition:none}}
+
+/* Use the supplied colour artwork, including its yellow sun. */
+.site-header .brand img{filter:brightness(1.05);mix-blend-mode:multiply}
