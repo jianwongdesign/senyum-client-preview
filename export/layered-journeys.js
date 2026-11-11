@@ -5,6 +5,13 @@
   const updateHeader = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
   window.addEventListener('scroll', updateHeader, { passive: true });
   updateHeader();
+  const hero = document.querySelector('#top');
+  if (hero) {
+    const fitHero = () => hero.style.setProperty('--hero-sticky-top', Math.min(0, innerHeight - hero.offsetHeight) + 'px');
+    new ResizeObserver(fitHero).observe(hero);
+    window.addEventListener('resize', fitHero, { passive: true });
+    fitHero();
+  }
   const navigate = (target, behavior = 'smooth') => {
     // The first panel's normal-flow position does not change when the hero sticks.
     const destination = target.id === 'top' ? 0 : target.getBoundingClientRect().top + window.scrollY - header.firstElementChild.offsetHeight - 16;

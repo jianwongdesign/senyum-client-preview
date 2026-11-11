@@ -78,3 +78,5 @@ p{max-width:none;text-wrap:wrap;white-space:normal}
 
 /* Use the supplied colour artwork, including its yellow sun. */
 .site-header .brand img{filter:brightness(1.05);mix-blend-mode:multiply}
+.footer-policy-links{display:flex;flex-wrap:wrap;gap:4px 24px;margin-top:20px;font-size:13px;color:#c6d6c6}
+.footer-policy-links a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:4px}

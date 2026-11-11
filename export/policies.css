@@ -1,0 +1,44 @@
+.policy-main{max-width:980px;padding-top:32px;padding-bottom:80px}
+.policy-heading{padding-top:16px}
+.policy-heading h1{font-family:'Nunito Sans',sans-serif;font-size:clamp(36px,4.6vw,64px);font-weight:800;letter-spacing:-.035em;line-height:1.12}
+.policy-heading>p{margin-top:24px;color:var(--muted);font-size:18px;line-height:1.65}
+.policy-pages{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:28px;border-bottom:1px solid var(--rule)}
+.policy-pages a{display:flex;align-items:center;min-height:48px;padding-bottom:10px;font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:6px}
+.policy-pages a[aria-current='page']{color:#08735b;text-decoration-thickness:3px}
+.policy-contents{border-bottom:1px solid var(--rule);padding:12px 0}
+.policy-contents>summary{font-weight:700;cursor:pointer;min-height:44px;padding:10px 0}
+.policy-contents nav{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;padding:8px 0 16px}
+.policy-contents a{display:flex;align-items:center;min-height:44px;font-size:14px;color:var(--muted);text-decoration:underline}
+.policy-copy section{padding-top:40px;scroll-margin-top:128px}
+.policy-copy h2,.policy-help h2{font-family:'Nunito Sans',sans-serif;font-weight:800;font-size:clamp(24px,2.5vw,30px);line-height:1.25;letter-spacing:-.02em}
+.policy-copy p{margin-top:18px;font-size:16px;line-height:1.8;color:var(--muted)}
+.policy-copy a,.policy-help a{color:#08735b;text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere}
+.policy-copy table{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:22px;font-size:15px;line-height:1.65}
+.policy-copy th,.policy-copy td{padding:16px 18px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule)}
+.policy-copy th{background:var(--soft);font-weight:800;color:var(--ink)}
+.policy-copy th:first-child{width:38%}
+.policy-copy td{color:var(--muted)}
+.policy-payment-details{display:grid;grid-template-columns:minmax(130px,.7fr) minmax(0,1.3fr);margin-top:20px;font-size:15px;line-height:1.6}
+.policy-payment-details dt,.policy-payment-details dd{margin:0;padding:10px 0;border-bottom:1px solid var(--rule);overflow-wrap:anywhere}
+.policy-payment-details dt{color:var(--muted)}
+.policy-payment-details dd{font-weight:700}
+.policy-help{margin-top:48px;padding-top:32px;border-top:1px solid var(--rule)}
+.policy-help p{margin:18px 0 12px;color:var(--muted);line-height:1.7}
+.policy-help>a{display:flex;align-items:center;min-height:44px;width:fit-content}
+.policy-footer{border-radius:0;padding-top:0;padding-bottom:100px}
+.policy-footer .about-footer{border-top:0}
+@media(max-width:767px){
+ .policy-main{padding-top:24px;padding-bottom:48px}
+ .policy-heading{padding-top:0}
+ .policy-heading>p{font-size:16px;margin-top:18px}
+ .policy-pages{gap:4px 20px;margin-top:20px}
+ .policy-pages a{font-size:13px}
+ .policy-contents nav{grid-template-columns:1fr}
+ .policy-copy section{padding-top:32px;scroll-margin-top:110px}
+ .policy-copy p{font-size:15px;line-height:1.75;margin-top:16px}
+ .policy-copy table{font-size:13px;line-height:1.65}
+ .policy-copy th,.policy-copy td{padding:12px 10px}
+ .policy-copy th:first-child{width:40%}
+ .policy-payment-details{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);font-size:13px;column-gap:12px}
+ .policy-help{margin-top:36px;padding-top:28px}
+}
