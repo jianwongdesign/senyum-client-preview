@@ -1,0 +1,40 @@
+/* One footer shared by Home, About, itinerary and policy pages. */
+footer.site-footer{position:relative;z-index:auto;margin:0;border-radius:0;box-shadow:none;background:#183d35;color:#c4d3ce;padding:52px clamp(24px,5vw,88px) 100px;font-family:'Nunito Sans',sans-serif;line-height:1.7;text-align:left}
+#enquire>footer.site-footer{margin:64px calc(-1 * var(--page-gutter)) 0;width:calc(100% + 2 * var(--page-gutter))}
+.site-footer .site-footer-inner,.site-footer .site-footer-review{max-width:1440px;margin:0 auto}
+.site-footer .site-footer-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(24px,3vw,44px);padding-bottom:38px}
+.site-footer-grid>div{min-width:0}
+.site-footer img.senyum-brand-logo{display:block;width:150px!important;height:auto!important;background:transparent;padding:0;filter:brightness(0) invert(1)}
+.site-footer p,.site-footer h3,.site-footer ul{margin:0}
+.site-footer h3{font-family:'Nunito Sans',sans-serif;font-size:15px;font-weight:700;line-height:1.7;letter-spacing:0;color:#fff}
+.site-footer-grid>div:first-child>p{margin-top:16px;max-width:274px;font-size:14px;line-height:1.7;font-weight:600;color:#b6c8c1}
+.site-footer-grid>div:first-child>p:last-child{margin-top:14px;font-weight:700;line-height:1.8;color:#e4ede9;overflow-wrap:anywhere}
+.site-footer ul{padding:0;list-style:none;display:grid;gap:10px;margin-top:14px}
+.site-footer li{margin:0;padding:0}
+.site-footer a{color:inherit;text-decoration:none}
+.site-footer li a{font-size:14.5px;font-weight:600}
+.site-footer a:hover{color:#d9ed92}
+.site-footer a:focus-visible{outline:2px solid #d9ed92!important;outline-offset:4px!important}
+.site-footer .site-footer-socials{display:flex;flex-wrap:wrap;gap:4px;margin-top:16px}
+.site-footer .site-social-link{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;flex:0 0 44px;color:#e4ede9;border-radius:8px}
+.site-footer .site-social-link:hover{color:#d9ed92;background:rgba(255,255,255,.08)}
+.site-footer .site-social-link:focus-visible{outline-offset:-2px!important}
+.site-social-link svg{display:block}
+.site-footer-bottom{border-top:1px solid rgba(196,211,206,.22);padding:18px 0 26px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;justify-content:space-between;font-size:13px;font-weight:600;color:#b6c8c1}
+.site-footer .design-credit,.site-footer-review a{text-decoration:underline;text-underline-offset:4px;color:#d9e6d2}
+.site-footer .site-footer-review{font-size:12px;color:#dae5de;padding-top:8px}
+@media(max-width:1023px) and (min-width:768px){.site-footer .site-footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:767px){
+ footer.site-footer{padding:40px 22px 100px}
+ #enquire>footer.site-footer{margin-top:48px}
+ .site-footer .site-footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 20px}
+ .site-footer-grid>div:first-child{grid-column:1/-1;display:grid;grid-template-columns:80px minmax(0,1fr);gap:12px 20px;align-items:start;overflow-wrap:anywhere}
+ .site-footer-grid img.senyum-brand-logo{grid-row:1/3;width:80px!important;max-width:100%}
+ .site-footer-grid>div:first-child>p{margin-top:0!important;max-width:none}
+ .site-footer-grid>div:last-child{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px;align-items:start}
+ .site-footer-grid>div:last-child>h3{grid-column:1/-1}
+ .site-footer .site-footer-socials{flex-wrap:nowrap;gap:0}
+ .site-footer li a{display:inline-flex;align-items:center;min-height:44px;line-height:1.5}
+ .site-footer ul{gap:0;margin-top:8px}
+ .site-footer-bottom{font-size:12px}
+}

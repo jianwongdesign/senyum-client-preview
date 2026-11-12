@@ -1,6 +1,6 @@
 .policy-main{max-width:980px;padding-top:32px;padding-bottom:80px}
 .policy-heading{padding-top:16px}
-.policy-heading h1{font-family:'Nunito Sans',sans-serif;font-size:clamp(36px,4.6vw,64px);font-weight:800;letter-spacing:-.035em;line-height:1.12}
+.policy-heading h1{max-width:none;font-family:'Nunito Sans',sans-serif;font-size:clamp(36px,4.6vw,64px);font-weight:800;letter-spacing:-.035em;line-height:1.12}
 .policy-heading>p{margin-top:24px;color:var(--muted);font-size:18px;line-height:1.65}
 .policy-pages{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:28px;border-bottom:1px solid var(--rule)}
 .policy-pages a{display:flex;align-items:center;min-height:48px;padding-bottom:10px;font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:6px}
@@ -25,8 +25,6 @@
 .policy-help{margin-top:48px;padding-top:32px;border-top:1px solid var(--rule)}
 .policy-help p{margin:18px 0 12px;color:var(--muted);line-height:1.7}
 .policy-help>a{display:flex;align-items:center;min-height:44px;width:fit-content}
-.policy-footer{border-radius:0;padding-top:0;padding-bottom:100px}
-.policy-footer .about-footer{border-top:0}
 @media(max-width:767px){
  .policy-main{padding-top:24px;padding-bottom:48px}
  .policy-heading{padding-top:0}
