@@ -660,13 +660,19 @@ header button[aria-controls='mobile-navigation']{background:#e5f4eb!important;co
  #testimonials{padding:44px var(--page-gutter);scroll-margin-top:86px}.testimonial-grid{grid-template-columns:1fr;gap:28px}.testimonial{padding-top:22px}.testimonial-mark{font-size:60px}.testimonial blockquote{margin-bottom:16px}.testimonial blockquote p{font-size:18px}.testimonial figcaption{gap:2px}
 }
 
-/* One footer shared by Home, About, itinerary and policy pages. */
-footer.site-footer{position:relative;z-index:auto;margin:0;border-radius:0;box-shadow:none;background:#183d35;color:#c4d3ce;padding:52px clamp(24px,5vw,88px) 100px;font-family:'Nunito Sans',sans-serif;line-height:1.7;text-align:left}
+/* A continuous closing section and footer across all page families. */
+section.site-closing{background:#183d35;color:#f8fbf8;border-radius:24px 24px 0 0;padding:0}
+.site-closing>.wrap{padding-block:40px;border-bottom:1px solid #48685a}
+.site-closing .contact-grid,.site-closing .tour-contact-row{padding-bottom:0}
+.site-closing .tour-contact-row{gap:24px}
+.site-closing .tour-contact-row h2{font-size:clamp(30px,3vw,44px)}
+.site-closing .tour-contact-row>.button{flex-shrink:0}
+footer.site-footer{position:relative;z-index:auto;margin:0;border-radius:0;box-shadow:none;background:#183d35;color:#c4d3ce;padding:40px clamp(22px,5vw,88px) 96px;font-family:'Nunito Sans',sans-serif;line-height:1.7;text-align:left}
 #enquire>footer.site-footer{margin:64px calc(-1 * var(--page-gutter)) 0;width:calc(100% + 2 * var(--page-gutter))}
-.site-footer .site-footer-inner{max-width:1440px;margin:0 auto}
+.site-footer .site-footer-inner{max-width:1360px;margin:0 auto}
 .site-footer .site-footer-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(24px,3vw,44px)}
 .site-footer-grid>div{min-width:0}
-.site-footer img.senyum-brand-logo{display:block;width:150px!important;height:auto!important;background:transparent;padding:0;filter:brightness(0) invert(1)}
+.site-footer img.senyum-brand-logo{display:block;width:120px!important;height:auto!important;background:transparent;padding:0;filter:brightness(0) invert(1)}
 .site-footer p,.site-footer h3,.site-footer ul{margin:0}
 .site-footer h3{font-family:'Nunito Sans',sans-serif;font-size:15px;font-weight:700;line-height:1.7;letter-spacing:0;color:#fff}
 .site-footer-grid>div:first-child>p{margin-top:16px;max-width:274px;font-size:14px;line-height:1.7;font-weight:600;color:#b6c8c1}
@@ -684,7 +690,10 @@ footer.site-footer{position:relative;z-index:auto;margin:0;border-radius:0;box-s
 .site-social-link svg{display:block}
 @media(max-width:1023px) and (min-width:768px){.site-footer .site-footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:767px){
- footer.site-footer{padding:40px 22px 100px}
+ section.site-closing{border-radius:22px 22px 0 0}
+ .site-closing>.wrap{padding-block:32px}
+ .site-closing .tour-contact-row{gap:22px}
+ footer.site-footer{padding:32px 22px 88px}
  #enquire>footer.site-footer{margin-top:48px}
  .site-footer .site-footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 20px}
  .site-footer-grid>div:first-child{grid-column:1/-1;display:grid;grid-template-columns:80px minmax(0,1fr);gap:12px 20px;align-items:start;overflow-wrap:anywhere}
@@ -1670,8 +1679,6 @@ if (!tourRoute && location.hash) { const target = document.getElementById(locati
 .whatsapp-float:hover{background:#e5f4eb;color:#103f35!important;border-color:#91bea7}
 .whatsapp-float:focus-visible{outline:3px solid #08735b;outline-offset:4px}
 .destination-hero__bottom{padding-right:264px}
-#enquire>footer.journey-footer{padding-bottom:112px}
-.contact-section{padding-bottom:88px}
 @media(max-width:900px){.whatsapp-float{width:54px;height:54px;min-height:54px;padding:0;justify-content:center;right:max(16px,env(safe-area-inset-right));bottom:calc(16px + env(safe-area-inset-bottom));border-radius:18px 18px 6px 18px;border-color:#08735b;background:#08735b;color:white!important}.whatsapp-float__icon{width:100%;height:100%;background:transparent;border-radius:inherit}.whatsapp-float__copy,.whatsapp-float .whatsapp-float__arrow{display:none}.whatsapp-float:hover{background:#065b47}.destination-hero__bottom{padding-right:66px}}
 @media(prefers-reduced-motion:no-preference){.whatsapp-float{transition:background-color .22s ease,transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease,border-color .22s ease}.whatsapp-float .whatsapp-float__arrow{transition:transform .25s ease}.whatsapp-float:hover .whatsapp-float__arrow{transform:translateX(3px)}.whatsapp-float:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(6,55,40,.2)}}
 </style>
