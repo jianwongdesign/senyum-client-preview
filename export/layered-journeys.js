@@ -18,6 +18,21 @@
     window.scrollTo({ top: Math.max(0, destination), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : behavior });
   };
   window.senyumNavigate = navigate;
+  // The destination globe replaces a taller fallback directory after loading.
+  // Re-align incoming section links once that layout and the fonts settle.
+  window.senyumNavigateWhenReady = target => {
+    const controller = new AbortController();
+    let cancelled = false;
+    const cancel = () => { cancelled = true; controller.abort(); };
+    for (const type of ['wheel', 'touchstart', 'pointerdown', 'keydown']) {
+      window.addEventListener(type, cancel, { once:true, passive:true, signal:controller.signal });
+    }
+    navigate(target, 'instant');
+    Promise.allSettled([document.fonts.ready, window.senyumGlobeReady]).then(() => requestAnimationFrame(() => {
+      if (!cancelled) navigate(target, 'instant');
+      controller.abort();
+    }));
+  };
   document.addEventListener('click', event => {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const anchor = event.target.closest('a[href^="#"]');

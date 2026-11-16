@@ -106,5 +106,5 @@
       initialized = false;
     }
   }
-  init();
+  window.senyumGlobeReady = init();
 })();
