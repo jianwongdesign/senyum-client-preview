@@ -634,11 +634,37 @@ header button[aria-controls='mobile-navigation']{background:#e5f4eb!important;co
 }
 @media(prefers-reduced-motion:reduce) { .enquiry-layout summary svg { transition:none; } }
 
+/* Honeymoons and corporate journeys are dedicated service destinations. */
+.journey-specials{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:28px}
+.journey-specials>a{display:flex;flex-direction:column;padding:32px;background:#103f35;color:#f8fbf8;border-radius:14px}
+.journey-specials>a:nth-child(2){background:#e5f4eb;color:#103f35}
+.journey-specials__label{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.journey-specials h3{font-size:clamp(23px,2.2vw,32px);line-height:1.2;margin:18px 0 24px}
+.journey-specials__cta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;min-height:44px;font-size:14px;font-weight:800}
+.journey-specials svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;flex-shrink:0}
+.journey-specials>a:hover .journey-specials__cta{text-decoration:underline;text-underline-offset:5px}
+#testimonials{background:#f8fbf8;padding:80px var(--page-gutter);scroll-margin-top:104px}
+#testimonials .testimonial-eyebrow{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#406357;margin-bottom:16px}
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.testimonial{display:flex;flex-direction:column;margin:0;border-top:1px solid #a9c8b8;padding-top:24px}
+.testimonial-mark{font-family:Georgia,serif;font-size:72px;line-height:.85;color:#08735b}
+.testimonial blockquote{margin:8px 0 28px}
+.testimonial blockquote p{font-size:20px;line-height:1.6;font-weight:600;color:#103f35}
+.testimonial figcaption{display:grid;gap:8px;margin-top:auto;font-size:14px}
+.testimonial figcaption strong{font-weight:800}
+.testimonial figcaption a{display:inline-flex;gap:12px;align-items:center;min-height:44px;color:#406357;font-size:13px;text-decoration:underline;text-underline-offset:4px}
+.review-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:1023px){.testimonial-grid{gap:24px}.testimonial blockquote p{font-size:17px}.journey-specials>a{padding:26px}}
+@media(max-width:767px){
+ .journey-specials{gap:14px;margin-top:20px}.journey-specials>a{padding:20px 16px}.journey-specials__label{font-size:10px;letter-spacing:.03em}.journey-specials h3{font-size:21px;margin:16px 0 20px}.journey-specials__cta{font-size:12px;line-height:1.5;gap:8px}.journey-specials svg{width:18px;height:18px}
+ #testimonials{padding:44px var(--page-gutter);scroll-margin-top:86px}.testimonial-grid{grid-template-columns:1fr;gap:28px}.testimonial{padding-top:22px}.testimonial-mark{font-size:60px}.testimonial blockquote{margin-bottom:16px}.testimonial blockquote p{font-size:18px}.testimonial figcaption{gap:2px}
+}
+
 /* One footer shared by Home, About, itinerary and policy pages. */
 footer.site-footer{position:relative;z-index:auto;margin:0;border-radius:0;box-shadow:none;background:#183d35;color:#c4d3ce;padding:52px clamp(24px,5vw,88px) 100px;font-family:'Nunito Sans',sans-serif;line-height:1.7;text-align:left}
 #enquire>footer.site-footer{margin:64px calc(-1 * var(--page-gutter)) 0;width:calc(100% + 2 * var(--page-gutter))}
-.site-footer .site-footer-inner,.site-footer .site-footer-review{max-width:1440px;margin:0 auto}
-.site-footer .site-footer-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(24px,3vw,44px);padding-bottom:38px}
+.site-footer .site-footer-inner{max-width:1440px;margin:0 auto}
+.site-footer .site-footer-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(24px,3vw,44px)}
 .site-footer-grid>div{min-width:0}
 .site-footer img.senyum-brand-logo{display:block;width:150px!important;height:auto!important;background:transparent;padding:0;filter:brightness(0) invert(1)}
 .site-footer p,.site-footer h3,.site-footer ul{margin:0}
@@ -656,9 +682,6 @@ footer.site-footer{position:relative;z-index:auto;margin:0;border-radius:0;box-s
 .site-footer .site-social-link:hover{color:#d9ed92;background:rgba(255,255,255,.08)}
 .site-footer .site-social-link:focus-visible{outline-offset:-2px!important}
 .site-social-link svg{display:block}
-.site-footer-bottom{border-top:1px solid rgba(196,211,206,.22);padding:18px 0 26px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;justify-content:space-between;font-size:13px;font-weight:600;color:#b6c8c1}
-.site-footer .design-credit,.site-footer-review a{text-decoration:underline;text-underline-offset:4px;color:#d9e6d2}
-.site-footer .site-footer-review{font-size:12px;color:#dae5de;padding-top:8px}
 @media(max-width:1023px) and (min-width:768px){.site-footer .site-footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:767px){
  footer.site-footer{padding:40px 22px 100px}
@@ -672,7 +695,6 @@ footer.site-footer{position:relative;z-index:auto;margin:0;border-radius:0;box-s
  .site-footer .site-footer-socials{flex-wrap:nowrap;gap:0}
  .site-footer li a{display:inline-flex;align-items:center;min-height:44px;line-height:1.5}
  .site-footer ul{gap:0;margin-top:8px}
- .site-footer-bottom{font-size:12px}
 }
 </style></helmet>
 <div style="min-height:100vh;background:#f8fbf8">
@@ -713,8 +735,8 @@ footer.site-footer{position:relative;z-index:auto;margin:0;border-radius:0;box-s
           </div>
           </div>
         </div>
-        <a href="#enquire" style="font-size:15px;font-weight:600;color:#183D35;padding:10px 12px" style-hover="color:#103f35">Corporate</a>
-
+        <a href="Senyum-Corporate-Travel.html" style="font-size:15px;font-weight:600;color:#183D35;padding:10px 12px" style-hover="color:#103f35">Corporate</a>
+        <a href="Senyum-Honeymoon.html" style="font-size:15px;font-weight:600;color:#183D35;padding:10px 12px" style-hover="color:#103f35">Honeymoon</a>
         <a href="#dest" style="font-size:15px;font-weight:600;color:#183D35;padding:10px 12px" style-hover="color:#103f35">Singapore</a>
         <a href="Senyum-About.html" style="font-size:15px;font-weight:600;color:#183D35;padding:10px 12px" style-hover="color:#103f35">About</a>
         <button type="button" onClick="{{ toggleSearch }}" aria-label="Open search" style="margin-left:4px;background:rgba(6,81,74,0.08);border:0;border-radius:8px;width:42px;height:42px;display:grid;place-items:center;cursor:pointer;color:#103f35" style-hover="background:rgba(6,81,74,0.16)">
@@ -739,7 +761,7 @@ footer.site-footer{position:relative;z-index:auto;margin:0;border-radius:0;box-s
     <sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
     <div style="background:#e5f4eb">
       <div style="max-width:1400px;margin:0 auto;padding:14px clamp(18px,4vw,52px);display:flex;gap:12px;align-items:center">
-        <input type="search" placeholder="Korea, Umrah, Turkey…" aria-label="Search the site" style="flex:1;min-width:0;padding:15px 16px;border:2px solid #D3E2DC;border-radius:8px;background:#FFFFFF;font-size:15px" />
+        <input type="search" placeholder="Korea, Umrah, Turkey, honeymoon…" aria-label="Search the site" style="flex:1;min-width:0;padding:15px 16px;border:2px solid #D3E2DC;border-radius:8px;background:#FFFFFF;font-size:15px" />
         <span style="font-size:12.5px;font-weight:700;color:#4C5B56;white-space:nowrap">Demo only</span>
       </div>
     </div>
@@ -762,8 +784,8 @@ footer.site-footer{position:relative;z-index:auto;margin:0;border-radius:0;box-s
           <a href="Senyum-UmrahDiy.html" style="padding:15px 14px;border-radius:8px;background:#e5f4eb;font-size:15px;font-weight:600;color:#183D35">DIY Umrah</a>
         </div>
         </div></div>
-        <a href="#enquire" style="padding:17px 14px;border-radius:8px;background:#FFFFFF;font-size:16px;font-weight:700;color:#183D35">Corporate &amp; MICE</a>
-
+        <a href="Senyum-Corporate-Travel.html" style="padding:17px 14px;border-radius:8px;background:#FFFFFF;font-size:16px;font-weight:700;color:#183D35">Corporate &amp; MICE</a>
+        <a href="Senyum-Honeymoon.html" style="padding:17px 14px;border-radius:8px;background:#FFFFFF;font-size:16px;font-weight:700;color:#183D35">Honeymoon</a>
         <a href="#dest" style="padding:17px 14px;border-radius:8px;background:#FFFFFF;font-size:16px;font-weight:700;color:#183D35">Singapore Tours</a>
         <a href="Senyum-About.html" style="padding:17px 14px;border-radius:8px;background:#FFFFFF;font-size:16px;font-weight:700;color:#183D35">About</a>
         <a href="#enquire" style="padding:17px 14px;border-radius:8px;background:#FFFFFF;font-size:16px;font-weight:700;color:#183D35">Contact</a>
@@ -864,6 +886,10 @@ footer.site-footer{position:relative;z-index:auto;margin:0;border-radius:0;box-s
       <a class="journey-type" href="#finder" onClick="{{ pickGroup }}"><img src="assets/cappadocia-hero.jpg" alt="Hot-air balloons over Cappadocia" width="2400" height="1600" loading="lazy" /><div class="journey-type__copy"><h3>Group tour packages</h3><p>Discover new places together, with the route, stays and daily details thoughtfully arranged.</p><span><span class="desktop-only">View our Group Tour Packages</span><span class="mobile-only">View packages</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg></span></div></a>
       <a class="journey-type" href="#finder" onClick="{{ pickPrivate }}"><div class="journey-type__image"><image-slot id="b-private" role="img" aria-label="Kiyomizu-dera in Kyoto" shape="rect" fit="cover" src="https://commons.wikimedia.org/wiki/Special:FilePath/Kiyomizu-dera%20in%20Kyoto-r.jpg?width=1200" placeholder=" "></image-slot></div><div class="journey-type__copy"><h3>Customised private tours</h3><p>Choose from 40 itinerary ideas, then make one your own. Your dates, your favourite people and your own pace.</p><span><span class="desktop-only">Explore Customised Private Tours</span><span class="mobile-only">View packages</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg></span></div></a>
     </div>
+    <div class="journey-specials">
+      <a href="Senyum-Honeymoon.html"><span class="journey-specials__label">Just the two of you</span><h3>A honeymoon, made yours.</h3><span class="journey-specials__cta">Explore honeymoons <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></span></a>
+      <a href="Senyum-Corporate-Travel.html"><span class="journey-specials__label">Bring your people together</span><h3>Corporate travel, with purpose.</h3><span class="journey-specials__cta">Explore corporate travel <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></span></a>
+    </div>
 <div class="journey-destinations" id="dest" style="background:#103f35;padding:clamp(48px,6vw,88px) clamp(18px,4vw,52px)">
     <div style="max-width:1400px;margin:0 auto">
       <div style="display:flex;flex-wrap:wrap;gap:12px 32px;align-items:flex-end;justify-content:space-between">
@@ -886,7 +912,17 @@ footer.site-footer{position:relative;z-index:auto;margin:0;border-radius:0;box-s
 
 
 
-  <section class="journey-layer" id="enquire" style="background:#FFFFFF;padding:clamp(48px,6vw,88px) clamp(18px,4vw,52px)">
+  <section class="journey-layer" id="testimonials" aria-labelledby="testimonials-heading">
+ <div class="journey-container">
+  <div class="section-heading"><div><p class="testimonial-eyebrow">Traveller stories</p><h2 id="testimonials-heading">Home with memories.<br />And a few kind words.</h2></div><p>Feedback shared by travellers on Senyum’s website.</p></div>
+  <div class="testimonial-grid">
+   <figure class="testimonial"><span class="testimonial-mark" aria-hidden="true">“</span><blockquote><p>The trip was customised to a family with kids and everyone was fully engaged on this magical historical journey.</p></blockquote><figcaption><strong>Uzbekistan family trip</strong><a href="assets/testimonials/uzbekistan-june-2026.jpg" target="_blank" rel="noopener noreferrer">Read original review <span aria-hidden="true">↗</span><span class="review-sr-only"> (opens in a new tab)</span></a></figcaption></figure>
+   <figure class="testimonial"><span class="testimonial-mark" aria-hidden="true">“</span><blockquote><p>We had fun with senyum travel, with the guides based in Singapore and the one in Vietnam.</p></blockquote><figcaption><strong>Vietnam group tour</strong><a href="assets/testimonials/vietnam-june-2026.jpg" target="_blank" rel="noopener noreferrer">Read original review <span aria-hidden="true">↗</span><span class="review-sr-only"> (opens in a new tab)</span></a></figcaption></figure>
+   <figure class="testimonial"><span class="testimonial-mark" aria-hidden="true">“</span><blockquote><p>Overall, we love the itinerary planned, both for Sabah (Kundasang -&gt; Kinabalu) and Phuket.</p></blockquote><figcaption><strong>Sabah &amp; Phuket trip</strong><a href="assets/testimonials/sabah-june-2026.jpg" target="_blank" rel="noopener noreferrer">Read original review <span aria-hidden="true">↗</span><span class="review-sr-only"> (opens in a new tab)</span></a></figcaption></figure>
+  </div>
+ </div>
+</section>
+<section class="journey-layer" id="enquire" style="background:#FFFFFF;padding:clamp(48px,6vw,88px) clamp(18px,4vw,52px)">
   <div class="enquiry-layout">
     <div class="enquiry-sidebar">
       <div class="enquiry-intro">
@@ -912,7 +948,7 @@ footer.site-footer{position:relative;z-index:auto;margin:0;border-radius:0;box-s
         <summary>Add trip details <span class="enquiry-optional">(optional)</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary>
         <div class="enquiry-fields enquiry-fields--extra">
           <label><span>Email</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" /></label>
-          <label><span>Travel type</span><select name="travel_type"><option>Group tour</option><option>Private or customised tour</option><option>Umrah</option><option>Islamic heritage tour</option><option>Corporate &amp; MICE</option><option>Singapore inbound tour</option></select></label>
+          <label><span>Travel type</span><select name="travel_type"><option>Group tour</option><option>Private or customised tour</option><option>Umrah</option><option>Islamic heritage tour</option><option>Honeymoon</option><option>Corporate &amp; MICE</option><option>Singapore inbound tour</option></select></label>
           <label><span>Preferred dates</span><input name="dates" type="text" placeholder="Month or dates" /></label>
           <label><span>Travellers</span><input name="travellers" type="number" min="1" placeholder="2" inputmode="numeric" /></label>
           <label class="enquiry-wide"><span>Estimated budget</span><input name="budget" type="text" placeholder="SGD per traveller" /></label>
@@ -939,7 +975,7 @@ footer.site-footer{position:relative;z-index:auto;margin:0;border-radius:0;box-s
             <li><a href="Senyum-Layered-Journeys.html?tour=private#finder">Private &amp; Custom Tours</a></li>
             <li><a href="Senyum-Layered-Journeys.html?tour=private#finder">Islamic Tours</a></li>
             <li><a href="Senyum-Layered-Journeys.html#umrah">Umrah</a></li>
-
+            <li><a href="Senyum-Honeymoon.html">Honeymoon</a></li>
             <li><a href="Senyum-Layered-Journeys.html#dest">Singapore Inbound Tours</a></li>
           </ul>
         </div>
@@ -947,7 +983,8 @@ footer.site-footer{position:relative;z-index:auto;margin:0;border-radius:0;box-s
           <h3>Company</h3>
           <ul>
             <li><a href="Senyum-About.html">About Senyum</a></li>
-            <li><a href="Senyum-Layered-Journeys.html#enquire">Corporate &amp; MICE</a></li>
+            <li><a href="Senyum-Corporate-Travel.html">Corporate Travel</a></li>
+            <li><a href="Senyum-Layered-Journeys.html#testimonials">Testimonials</a></li>
             <li><a href="Senyum-Layered-Journeys.html#enquire">Contact &amp; Enquiry</a></li>
             <li><a href="Senyum-Layered-Journeys.html?tour=group#finder">Tour Catalogue</a></li>
           </ul>
@@ -966,36 +1003,15 @@ footer.site-footer{position:relative;z-index:auto;margin:0;border-radius:0;box-s
           </div>
         </div>
       </div>
-      <div class="site-footer-bottom">
-        <p>© 2026 Senyum Rihlat Pte Ltd Travel Agent Licence TA04130.</p>
-        <p><a class="design-credit" href="https://adcendes.com.sg/" target="_blank" rel="noopener noreferrer">Design by Adcendes</a></p>
-      </div>
     </div>
-  <p class="site-footer-review">Design preview · AI-created destination film · Sample tour prices require confirmation. <a href="../index.html">Compare design concepts</a></p></footer>
+</footer>
 </section>
 
 
 
 
 
-  <sc-if value="{{ testimonials }}" hint-placeholder-val="{{ true }}">
-  <section style="background:#f8fbf8;padding:clamp(38px,4.5vw,62px) clamp(18px,4vw,52px)">
-    <div style="max-width:1400px;margin:0 auto">
-      <div style="display:flex;flex-wrap:wrap;gap:10px 24px;align-items:baseline;justify-content:space-between">
-        <h2 style="font-size:clamp(24px,2.6vw,32px);font-weight:700;color:#183D35">Traveller reviews</h2>
-        <p style="font-size:13.5px;font-weight:700;color:#4C5B56">Placeholders — real quotes to be supplied and approved by Senyum</p>
-      </div>
-      <div style="margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(14px,1.6vw,20px)">
-        <sc-for list="{{ quotes }}" as="q" hint-placeholder-count="3">
-          <div style="background:#FFFFFF;border:2px dashed #D8C9A8;border-radius:8px;padding:22px 20px;min-height:150px;display:flex;flex-direction:column">
-            <p style="font-size:15px;line-height:1.55;font-weight:600;color:#4C5B56;flex:1">{{ q.text }}</p>
-            <p style="margin-top:14px;font-size:13px;font-weight:700;color:#6B7A75">{{ q.label }}</p>
-          </div>
-        </sc-for>
-      </div>
-    </div>
-  </section>
-  </sc-if>
+
 
 
 
@@ -1025,7 +1041,7 @@ class Component extends DCLogic {
 
   groupTourDetails = {"China": {"title": "China group journeys", "meta": "7–9 days", "price": "Price on enquiry", "note": "Ask us about the next departure, itinerary and available places."}, "Bosnia": {"title": "Bosnia Muslim experience", "meta": "10 days", "price": "Price on enquiry", "note": "Ask us about the next departure, itinerary and available places."}, "Turkey": {"title": "Turkey group journey", "meta": "8 days", "price": "Price on enquiry", "note": "Ask us about the next departure, itinerary and available places."}, "Korea": {"title": "Busan & Seoul together", "meta": "7 days · 6 nights", "price": "Price on enquiry", "note": "Ask us about the next departure, itinerary and available places."}, "Uzbekistan": {"title": "Uzbekistan Silk Road journey", "meta": "12 days · 10 nights", "price": "Price on enquiry", "note": "Ask us about the next departure, itinerary and available places."}, "Jordan": {"title": "Jordan group journey", "meta": "8 days · 7 nights", "price": "Price on enquiry", "note": "Ask us about the next departure, itinerary and available places."}};
 
-  detailLinks = {"source": "https://senyum.com.sg/", "retrieved": "2026-11-03", "destinations": {"Brunei": "https://senyum.com.sg/brunei/", "Cambodia": "https://senyum.com.sg/cambodia/", "China": "https://senyum.com.sg/china/", "Indonesia": "https://senyum.com.sg/indonesia/", "Japan": "https://senyum.com.sg/japan/", "Korea": "https://senyum.com.sg/korea-travel-packages-from-singapore/", "Malaysia": "https://senyum.com.sg/malaysia/", "Pakistan": "https://senyum.com.sg/pakistan/", "Taiwan": "https://senyum.com.sg/taiwan/", "Thailand": "https://senyum.com.sg/thailand/", "Vietnam": "https://senyum.com.sg/vietnam/", "Bosnia": "https://senyum.com.sg/bosnia/", "Maldives": "https://senyum.com.sg/maldives", "Egypt": "https://senyum.com.sg/egypt/", "Jordan": "https://senyum.com.sg/jordan/", "Turkey": "https://senyum.com.sg/turkey/", "Uzbekistan": "https://senyum.com.sg/uzbekistan/"}, "group": {"China": "Senyum-Group-China.html", "Bosnia": "Senyum-Group-Bosnia.html", "Turkey": "Senyum-Group-Turkey.html", "Korea": "Senyum-Group-Korea.html", "Uzbekistan": "Senyum-Group-Uzbekistan.html", "Jordan": "Senyum-Group-Jordan.html"}, "corporate": "https://senyum.com.sg/mice/"};
+  detailLinks = {"source": "https://senyum.com.sg/", "retrieved": "2026-11-03", "destinations": {"Brunei": "https://senyum.com.sg/brunei/", "Cambodia": "https://senyum.com.sg/cambodia/", "China": "https://senyum.com.sg/china/", "Indonesia": "https://senyum.com.sg/indonesia/", "Japan": "https://senyum.com.sg/japan/", "Korea": "https://senyum.com.sg/korea-travel-packages-from-singapore/", "Malaysia": "https://senyum.com.sg/malaysia/", "Pakistan": "https://senyum.com.sg/pakistan/", "Taiwan": "https://senyum.com.sg/taiwan/", "Thailand": "https://senyum.com.sg/thailand/", "Vietnam": "https://senyum.com.sg/vietnam/", "Bosnia": "https://senyum.com.sg/bosnia/", "Maldives": "https://senyum.com.sg/maldives", "Egypt": "https://senyum.com.sg/egypt/", "Jordan": "https://senyum.com.sg/jordan/", "Turkey": "https://senyum.com.sg/turkey/", "Uzbekistan": "https://senyum.com.sg/uzbekistan/"}, "group": {"China": "Senyum-Group-China.html", "Bosnia": "Senyum-Group-Bosnia.html", "Turkey": "Senyum-Group-Turkey.html", "Korea": "Senyum-Group-Korea.html", "Uzbekistan": "Senyum-Group-Uzbekistan.html", "Jordan": "Senyum-Group-Jordan.html"}, "corporate": "Senyum-Corporate-Travel.html"};
 
   privateTours = [{"title": "China Xian", "meta": "5 days · 4 nights", "country": "China", "region": "China", "img": "assets/private-tours/01.jpg", "url": "Senyum-Tour-Xian.html", "badge": "Customised", "cats": ["private"], "slot": "private-1", "alt": "China tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "China Kunming Dali Lijiang", "meta": "7 days", "country": "China", "region": "China", "img": "assets/private-tours/02.jpg", "url": "Senyum-Tour-kunming-dali-lijiang-2.html", "badge": "Customised", "cats": ["private"], "slot": "private-2", "alt": "China tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "China Kunming Dali Lijiang", "meta": "9 days", "country": "China", "region": "China", "img": "assets/private-tours/03.jpg", "url": "Senyum-Tour-kunming-dali-lijiang-3.html", "badge": "Customised", "cats": ["private"], "slot": "private-3", "alt": "China tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "China Ancient Silk Road", "meta": "12 days", "country": "China", "region": "China", "img": "assets/private-tours/04.jpg", "url": "Senyum-Tour-china-s-ancient-silk-road-4.html", "badge": "Customised", "cats": ["private"], "slot": "private-4", "alt": "China tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "China Beijing Harbin Winter Package", "meta": "7 days", "country": "China", "region": "China", "img": "assets/private-tours/05.jpg", "url": "Senyum-Tour-beijing-harbin-5.html", "badge": "Customised", "cats": ["private"], "slot": "private-5", "alt": "China tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Uzbekistan", "meta": "7 days · 6 nights", "country": "Uzbekistan", "region": "Uzbekistan", "img": "assets/private-tours/06.jpg", "url": "Senyum-Tour-uzbekistan-6.html", "badge": "Customised", "cats": ["private"], "slot": "private-6", "alt": "Uzbekistan tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Uzbekistan", "meta": "8 days · 7 nights", "country": "Uzbekistan", "region": "Uzbekistan", "img": "assets/private-tours/07.jpg", "url": "Senyum-Tour-uzbekistan-7.html", "badge": "Customised", "cats": ["private"], "slot": "private-7", "alt": "Uzbekistan tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Uzbekistan", "meta": "10 days · 9 nights", "country": "Uzbekistan", "region": "Uzbekistan", "img": "assets/private-tours/08.jpg", "url": "Senyum-Tour-uzbekistan-8.html", "badge": "Customised", "cats": ["private"], "slot": "private-8", "alt": "Uzbekistan tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Turkey", "meta": "8 days · 7 nights", "country": "Turkey", "region": "Turkey", "img": "assets/private-tours/09.jpg", "url": "Senyum-Tour-turkey-9.html", "badge": "Customised", "cats": ["private"], "slot": "private-9", "alt": "Turkey tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Turkey", "meta": "10 days · 9 nights", "country": "Turkey", "region": "Turkey", "img": "assets/private-tours/10.jpg", "url": "Senyum-Tour-turkey-10.html", "badge": "Customised", "cats": ["private"], "slot": "private-10", "alt": "Turkey tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Northern Vietnam", "meta": "5 days · 4 nights", "country": "Vietnam", "region": "Vietnam", "img": "assets/private-tours/11.jpg", "url": "Senyum-Tour-northern-vietnam-11.html", "badge": "Customised", "cats": ["private"], "slot": "private-11", "alt": "Vietnam tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Northern Vietnam", "meta": "6 days · 5 nights", "country": "Vietnam", "region": "Vietnam", "img": "assets/private-tours/12.jpg", "url": "Senyum-Tour-northern-vietnam-12.html", "badge": "Customised", "cats": ["private"], "slot": "private-12", "alt": "Vietnam tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Northern Vietnam", "meta": "7 days · 6 nights", "country": "Vietnam", "region": "Vietnam", "img": "assets/private-tours/13.jpg", "url": "Senyum-Tour-hanoi-ha-long-sapa-13.html", "badge": "Customised", "cats": ["private"], "slot": "private-13", "alt": "Vietnam tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Korea Seoul Series", "meta": "5 days · 4 nights", "country": "Korea", "region": "Korea", "img": "assets/private-tours/14.jpg", "url": "Senyum-Tour-seoul-14.html", "badge": "Customised", "cats": ["private"], "slot": "private-14", "alt": "Korea tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Korea Busan-Seoul", "meta": "8 days · 7 nights", "country": "Korea", "region": "Korea", "img": "assets/private-tours/15.jpg", "url": "Senyum-Tour-busan-seoul-15.html", "badge": "Customised", "cats": ["private"], "slot": "private-15", "alt": "Korea tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Korea Jeju-Seoul", "meta": "8 days · 7 nights", "country": "Korea", "region": "Korea", "img": "assets/private-tours/16.jpg", "url": "Senyum-Tour-jeju-seoul-16.html", "badge": "Customised", "cats": ["private"], "slot": "private-16", "alt": "Korea tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Sabah", "meta": "5 days · 4 nights", "country": "Malaysia", "region": "Sabah", "img": "assets/private-tours/17.jpg", "url": "Senyum-Tour-sabah-17.html", "badge": "Customised", "cats": ["private"], "slot": "private-17", "alt": "Sabah tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Sabah", "meta": "4 days · 3 nights", "country": "Malaysia", "region": "Sabah", "img": "assets/private-tours/18.jpg", "url": "Senyum-Tour-sabah-18.html", "badge": "Customised", "cats": ["private"], "slot": "private-18", "alt": "Sabah tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Brunei", "meta": "5 days · 4 nights", "country": "Brunei", "region": "Brunei", "img": "assets/private-tours/19.png", "url": "Senyum-Tour-brunei-19.html", "badge": "Customised", "cats": ["private"], "slot": "private-19", "alt": "Brunei tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Brunei · Islamic Cultural", "meta": "4 days · 3 nights", "country": "Brunei", "region": "Brunei", "img": "assets/private-tours/20.png", "url": "Senyum-Tour-brunei-s-islamic-culture-20.html", "badge": "Customised", "cats": ["private"], "slot": "private-20", "alt": "Brunei tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Brunei · Heritage Package", "meta": "4 days · 3 nights", "country": "Brunei", "region": "Brunei", "img": "assets/private-tours/21.png", "url": "Senyum-Tour-brunei-s-heritage-21.html", "badge": "Customised", "cats": ["private"], "slot": "private-21", "alt": "Brunei tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Bosnia", "meta": "8 days", "country": "Bosnia", "region": "Bosnia", "img": "assets/private-tours/22.jpg", "url": "Senyum-Tour-bosnia-22.html", "badge": "Customised", "cats": ["private"], "slot": "private-22", "alt": "Bosnia tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Pakistan", "meta": "10 days · 9 nights", "country": "Pakistan", "region": "Pakistan", "img": "assets/private-tours/23.jpg", "url": "Senyum-Tour-northern-pakistan-23.html", "badge": "Customised", "cats": ["private"], "slot": "private-23", "alt": "Pakistan tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View details"}, {"title": "Pakistan", "meta": "13 days · 12 nights", "country": "Pakistan", "region": "Pakistan", "img": "assets/private-tours/24.jpg", "url": "Senyum-Tour-northern-pakistan-24.html", "badge": "Customised", "cats": ["private"], "slot": "private-24", "alt": "Pakistan tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View details"}, {"title": "Egypt", "meta": "10 days · 9 nights", "country": "Egypt", "region": "Egypt", "img": "assets/private-tours/25.jpg", "url": "Senyum-Tour-egypt-25.html", "badge": "Customised", "cats": ["private"], "slot": "private-25", "alt": "Egypt tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Jordan", "meta": "8 days · 7 nights", "country": "Jordan", "region": "Jordan", "img": "assets/private-tours/26.png", "url": "Senyum-Tour-jordan-26.html", "badge": "Customised", "cats": ["private"], "slot": "private-26", "alt": "Jordan tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Thailand Chiang Mai", "meta": "5 days", "country": "Thailand", "region": "Thailand", "img": "assets/private-tours/27.jpg", "url": "Senyum-Tour-chiang-mai-27.html", "badge": "Customised", "cats": ["private"], "slot": "private-27", "alt": "Thailand tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Thailand Hat Yai", "meta": "5 days", "country": "Thailand", "region": "Thailand", "img": "assets/private-tours/28.png", "url": "Senyum-Tour-hat-yai-28.html", "badge": "Customised", "cats": ["private"], "slot": "private-28", "alt": "Thailand tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Thailand Bangkok-Kanchanaburi", "meta": "4 days · 3 nights", "country": "Thailand", "region": "Thailand", "img": "assets/private-tours/29.jpg", "url": "Senyum-Tour-bangkok-kanchanaburi-29.html", "badge": "Customised", "cats": ["private"], "slot": "private-29", "alt": "Thailand tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View details"}, {"title": "Thailand Bangkok Heritage", "meta": "4 days · 3 nights", "country": "Thailand", "region": "Thailand", "img": "assets/private-tours/30.jpg", "url": "Senyum-Tour-bangkok-heritage-30.html", "badge": "Customised", "cats": ["private"], "slot": "private-30", "alt": "Thailand tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View details"}, {"title": "Thailand Bangkok-Pattaya", "meta": "4 days · 3 nights", "country": "Thailand", "region": "Thailand", "img": "assets/private-tours/31.jpg", "url": "Senyum-Tour-bangkok-pattaya-31.html", "badge": "Customised", "cats": ["private"], "slot": "private-31", "alt": "Thailand tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View details"}, {"title": "Thailand Damnoen Saduak floating market & Safari World", "meta": "4 days · 3 nights", "country": "Thailand", "region": "Thailand", "img": "assets/private-tours/32.jpg", "url": "Senyum-Tour-floating-markets-safari-world-32.html", "badge": "Customised", "cats": ["private"], "slot": "private-32", "alt": "Thailand tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View details"}, {"title": "Indonesia Lake Toba North Sumatra", "meta": "6 days", "country": "Indonesia", "region": "Indonesia", "img": "assets/private-tours/33.jpg", "url": "Senyum-Tour-lake-toba-north-sumatra-33.html", "badge": "Customised", "cats": ["private"], "slot": "private-33", "alt": "Indonesia tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Indonesia Lombok", "meta": "4 days", "country": "Indonesia", "region": "Indonesia", "img": "assets/private-tours/34.jpg", "url": "Senyum-Tour-lombok-34.html", "badge": "Customised", "cats": ["private"], "slot": "private-34", "alt": "Indonesia tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Indonesia Batam", "meta": "2 days · 1 night", "country": "Indonesia", "region": "Indonesia", "img": "assets/private-tours/35.jpg", "url": "Senyum-Tour-batam-35.html", "badge": "Customised", "cats": ["private"], "slot": "private-35", "alt": "Indonesia tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View details"}, {"title": "Perak", "meta": "4 days · 3 nights", "country": "Malaysia", "region": "Perak", "img": "assets/private-tours/36.jpg", "url": "Senyum-Tour-perak-36.html", "badge": "Customised", "cats": ["private"], "slot": "private-36", "alt": "Perak tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Perak", "meta": "5 days · 4 nights", "country": "Malaysia", "region": "Perak", "img": "assets/private-tours/37.jpg", "url": "Senyum-Tour-ipoh-royal-belum-37.html", "badge": "Customised", "cats": ["private"], "slot": "private-37", "alt": "Perak tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Cambodia Tour", "meta": "5 days · 4 nights", "country": "Cambodia", "region": "Cambodia", "img": "assets/private-tours/38.jpg", "url": "Senyum-Tour-cambodia-38.html", "badge": "Customised", "cats": ["private"], "slot": "private-38", "alt": "Cambodia tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View itinerary"}, {"title": "Maldives Affordable Luxury", "meta": "4 days · 3 nights", "country": "Maldives", "region": "Maldives", "img": "assets/private-tours/39.png", "url": "Senyum-Tour-the-maldives-39.html", "badge": "Customised", "cats": ["private"], "slot": "private-39", "alt": "Maldives tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View details"}, {"title": "Maldives Affordable Luxury", "meta": "5 days · 4 nights", "country": "Maldives", "region": "Maldives", "img": "assets/private-tours/40.jpg", "url": "Senyum-Tour-the-maldives-40.html", "badge": "Customised", "cats": ["private"], "slot": "private-40", "alt": "Maldives tour from Senyum Rihlat", "price": "Price on enquiry", "note": "Make this itinerary your own. Ask us about your dates, travel party and preferred pace.", "cta": "View details"}];
 
@@ -1069,11 +1085,7 @@ class Component extends DCLogic {
     { name: 'Jordan', tag: 'Group · Private' }, { name: 'Maldives', tag: 'Private' }
   ];
 
-  quotes = [
-    { text: 'Traveller quote placeholder — to be supplied and approved by Senyum before publication.', label: 'Awaiting approved quote' },
-    { text: 'Traveller quote placeholder — to be supplied and approved by Senyum before publication.', label: 'Awaiting approved quote' },
-    { text: 'Traveller quote placeholder — to be supplied and approved by Senyum before publication.', label: 'Awaiting approved quote' }
-  ];
+  quotes = [];
 
   copy = {
     all: { title: 'Featured tours', blurb: 'Explore Muslim-friendly holidays for your next chapter. Ask us about dates, availability and private arrangements.' },

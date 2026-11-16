@@ -2,7 +2,7 @@
  const menu = document.querySelector('.menu-toggle');
  const nav = document.querySelector('.site-nav');
  const dropdowns = [...document.querySelectorAll('.nav-dropdown')];
- const mobile = matchMedia('(max-width:900px)');
+ const mobile = matchMedia('(max-width:1180px)');
  const setDropdown = (details,open) => window.senyumDetails ? window.senyumDetails.set(details,open) : details.open=open;
  const closeMenu = () => {
   nav.classList.remove('is-open');
